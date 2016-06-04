@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="MIMIc">
+      <UniqueIdentifier>{c4aabe07-278b-43e0-b7cb-39c6c8daa851}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Graphics">
+      <UniqueIdentifier>{c36a4d99-412c-4682-87b7-483accc5eaa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Graphics\_Managers">
+      <UniqueIdentifier>{bfdef745-884b-4f26-b33b-d3dafee86036}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Graphics\Headers">
+      <UniqueIdentifier>{169f1e0b-fe02-4915-b7ce-b6c17f71695f}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Graphics\Source">
+      <UniqueIdentifier>{4511e577-e355-422c-891d-68a2580f6bf2}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Graphics\_Managers\Headers">
+      <UniqueIdentifier>{fa505e25-c7ce-4837-8e3a-5cba1bbc5852}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Graphics\_Managers\Source">
+      <UniqueIdentifier>{b162926e-7153-43db-9b69-f8351b446494}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Utilities">
+      <UniqueIdentifier>{bf1bd3cd-72c5-458f-9b19-45a956ba326c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Utilities\Source">
+      <UniqueIdentifier>{a3debc2c-f138-4f17-b439-57f11d81d86a}</UniqueIdentifier>
+      <Extensions>*.cpp;*.inl</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Utilities\Headers">
+      <UniqueIdentifier>{12a8dd76-5e53-4873-b975-9d97301f462b}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Framework">
+      <UniqueIdentifier>{ef5f2a5d-5083-46f2-8992-8be080be7b47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Framework\Headers">
+      <UniqueIdentifier>{30153c31-02f3-4286-bf9b-5e87a441aa3e}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Framework\Source">
+      <UniqueIdentifier>{412e71c0-61da-4baf-b5c4-141c955599fe}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Framework\_Managers">
+      <UniqueIdentifier>{c96e399d-1098-4f88-8f48-2e42f2b70541}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Framework\_Managers\Source">
+      <UniqueIdentifier>{47d6e8b0-d4b5-416f-9266-055a171f586a}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Framework\_Managers\Headers">
+      <UniqueIdentifier>{a3a162ba-a8b0-4b5e-bf11-026ba4430ce8}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{20331544-15dd-4c16-82e4-793cc1c6c50d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\vertex">
+      <UniqueIdentifier>{5e252247-c1a5-416c-b7cb-0b7d879f8ab2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\fragment">
+      <UniqueIdentifier>{2652e86b-ed62-411f-8441-49eb6469c26e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Entities">
+      <UniqueIdentifier>{fceee3ce-e74a-456b-9d9e-8c007584649d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Entities\Headers">
+      <UniqueIdentifier>{4cc1d086-a750-48ff-b0e5-0b1924ac8613}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Entities\Source">
+      <UniqueIdentifier>{5a2315b5-0a24-4dda-a5d0-519dedbc782a}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Entities\_Managers">
+      <UniqueIdentifier>{5828c500-9901-4a3f-8ac0-91b8cf15e0b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Entities\_Managers\Headers">
+      <UniqueIdentifier>{df237354-db0d-46bb-8628-ba3882e0590d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Entities\_Managers\Source">
+      <UniqueIdentifier>{3d5823ab-5e09-4186-a2ac-10068235a823}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Components">
+      <UniqueIdentifier>{32a91efe-40c0-4f4e-9769-3d180c1569d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Components\Headers">
+      <UniqueIdentifier>{d0a4c8f1-999c-4e4a-9533-a07663d98640}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Components\Source">
+      <UniqueIdentifier>{ae2d6462-e564-4aa0-af7d-066f63bbdd79}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Math">
+      <UniqueIdentifier>{159f5e78-a6e1-446d-a903-ee83b84049d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Math\Headers">
+      <UniqueIdentifier>{75b7dc85-6d33-4dd1-a5fd-bf58df7cdbab}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Math\Source">
+      <UniqueIdentifier>{d2843d47-eb15-4422-9c87-9a4f40605da3}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\DataModel">
+      <UniqueIdentifier>{517bc0fa-b2a9-4d16-b1c6-d2c0862f3c3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\DataModel\Headers">
+      <UniqueIdentifier>{8691d896-de92-4fb1-a109-9bda6f5dbd75}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\DataModel\Source">
+      <UniqueIdentifier>{1c173826-25d8-49eb-9ba2-f4dcf03178bc}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="driver.cpp" />
+    <ClCompile Include="Graphics\_Managers\GraphicsManager.cpp">
+      <Filter>MIMIc\Graphics\_Managers\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\RenderPass.cpp">
+      <Filter>MIMIc\Graphics\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\_Managers\WindowManager.cpp">
+      <Filter>MIMIc\Framework\_Managers\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Window.cpp">
+      <Filter>MIMIc\Framework\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\TextTexture.cpp">
+      <Filter>MIMIc\Graphics\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\TextTextureDeserializer.cpp">
+      <Filter>MIMIc\Graphics\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\TestRenderPass.cpp">
+      <Filter>MIMIc\Graphics\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\TextRenderPass.cpp">
+      <Filter>MIMIc\Graphics\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\ShaderDeserializer.cpp">
+      <Filter>MIMIc\Graphics\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Shader.cpp">
+      <Filter>MIMIc\Graphics\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\TextTextureGraphicsComponent.cpp">
+      <Filter>MIMIc\Components\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\_Managers\EntitiesManager.cpp">
+      <Filter>MIMIc\Entities\_Managers\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Component.cpp">
+      <Filter>MIMIc\Components\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\_Managers\ErrorLogManager.cpp">
+      <Filter>MIMIc\Framework\_Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Vector2D.cpp">
+      <Filter>MIMIc\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Trig.cpp">
+      <Filter>MIMIc\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\TransformationComponent.cpp">
+      <Filter>MIMIc\Components\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\TextEntity.cpp">
+      <Filter>MIMIc\Entities\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DataModel\TextStyle.cpp">
+      <Filter>MIMIc\DataModel\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DataModel\TextStyleDeserializer.cpp">
+      <Filter>MIMIc\DataModel\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DataModel\TextStyleType.cpp">
+      <Filter>MIMIc\DataModel\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DataModel\TextStyleTypeCharacter.cpp">
+      <Filter>MIMIc\DataModel\Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Graphics\_Managers\GraphicsManager.h">
+      <Filter>MIMIc\Graphics\_Managers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\RenderPass.h">
+      <Filter>MIMIc\Graphics\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\HasId.h">
+      <Filter>MIMIc\Utilities\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\_Managers\WindowManager.h">
+      <Filter>MIMIc\Framework\_Managers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Window.h">
+      <Filter>MIMIc\Framework\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\TextTexture.h">
+      <Filter>MIMIc\Graphics\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\TextTextureDeserializer.h">
+      <Filter>MIMIc\Graphics\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\TestRenderPass.h">
+      <Filter>MIMIc\Graphics\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\TextRenderPass.h">
+      <Filter>MIMIc\Graphics\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Deserializer.h">
+      <Filter>MIMIc\Utilities\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\ShaderDeserializer.h">
+      <Filter>MIMIc\Graphics\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Shader.h">
+      <Filter>MIMIc\Graphics\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\TextTextureGraphicsComponent.h">
+      <Filter>MIMIc\Components\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Component.h">
+      <Filter>MIMIc\Components\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\_Managers\EntitiesManager.h">
+      <Filter>MIMIc\Entities\_Managers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\_Managers\ErrorLogManager.h">
+      <Filter>MIMIc\Framework\_Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vector2D.h">
+      <Filter>MIMIc\Math\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Trig.h">
+      <Filter>MIMIc\Math\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\TransformationComponent.h">
+      <Filter>MIMIc\Components\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\TextEntity.h">
+      <Filter>MIMIc\Entities\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DataModel\TextStyleType.h">
+      <Filter>MIMIc\DataModel\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DataModel\TextStyle.h">
+      <Filter>MIMIc\DataModel\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DataModel\TextStyleDeserializer.h">
+      <Filter>MIMIc\DataModel\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DataModel\TextStyleTypeCharacter.h">
+      <Filter>MIMIc\DataModel\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\JsonDeserializer.h">
+      <Filter>MIMIc\Utilities\Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Utilities\HasId.inl">
+      <Filter>MIMIc\Utilities\Headers</Filter>
+    </None>
+    <None Include="..\..\data\shaders\vertex\textrenderpass.glvs">
+      <Filter>Shaders\vertex</Filter>
+    </None>
+    <None Include="..\..\data\shaders\fragment\textrenderpass.glfs">
+      <Filter>Shaders\fragment</Filter>
+    </None>
+    <None Include="Graphics\_Managers\GraphicsManager.inl">
+      <Filter>MIMIc\Graphics\_Managers\Headers</Filter>
+    </None>
+    <None Include="Utilities\Deserializer.inl">
+      <Filter>MIMIc\Utilities\Headers</Filter>
+    </None>
+    <None Include="Entities\_Managers\EntitiesManager.inl">
+      <Filter>MIMIc\Entities\_Managers\Headers</Filter>
+    </None>
+    <None Include="Utilities\JsonDeserializer.inl">
+      <Filter>MIMIc\Utilities\Headers</Filter>
+    </None>
+  </ItemGroup>
+</Project>

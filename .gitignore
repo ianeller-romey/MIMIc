@@ -1,0 +1,36 @@
+#bin/obj
+*.obj
+*.ilk
+*.lastbuildstate
+*.pdb
+Built/Debug/*.log
+Built/Debug/*.tlog
+Built/Release/*.log
+Built/Release/*.tlog
+MIMIc_Framework/GenerateTextBoundingData/obj
+MIMIc_Framework/MIMIcJsonSerializer/obj
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# Visual Studio
+*.sdf
+*.suo
+*.user
+*.opensdf

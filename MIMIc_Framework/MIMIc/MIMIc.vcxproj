@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C29E93DE-6A35-4605-A75A-65C697DC1C28}</ProjectGuid>
+    <RootNamespace>MIMIc</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)..\Built\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\Built\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)..\Built\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\Built\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\external\SDL2-2.0.4\include;$(SolutionDir)..\external\glew-1.13.0\include\GL;$(SolutionDir)MIMIc\DataModel;$(SolutionDir)MIMIc\Framework;$(SolutionDir)MIMIc\Framework\_Managers;$(SolutionDir)MIMIc\Components;$(SolutionDir)MIMIc\Entities;$(SolutionDir)MIMIc\Entities\_Managers;$(SolutionDir)MIMIc\Graphics;$(SolutionDir)MIMIc\Graphics\_Managers;$(SolutionDir)MIMIc\Math;$(SolutionDir)MIMIc\Utilities</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\external\SDL2-2.0.4\lib\x86;$(SolutionDir)..\external\glew-1.13.0\lib\Release\Win32</AdditionalLibraryDirectories>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <Lib>
+    </Lib>
+    <PostBuildEvent>
+      <Command>echo F|xcopy "$(SolutionDir)..\external\SDL2-2.0.4\lib\x86\SDL2.dll" "$(OutDir)SDL2.dll" /Y
+echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll" "$(OutDir)glew32.dll" /Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\external\SDL2-2.0.4\include;$(SolutionDir)..\external\glew-1.13.0\include\GL;$(SolutionDir)MIMIc\DataModel;$(SolutionDir)MIMIc\Framework;$(SolutionDir)MIMIc\Framework\_Managers;$(SolutionDir)MIMIc\Components;$(SolutionDir)MIMIc\Entities;$(SolutionDir)MIMIc\Entities\_Managers;$(SolutionDir)MIMIc\Graphics;$(SolutionDir)MIMIc\Graphics\_Managers;$(SolutionDir)MIMIc\Math;$(SolutionDir)MIMIc\Utilities</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\external\SDL2-2.0.4\lib\x86;$(SolutionDir)..\external\glew-1.13.0\lib\Release\Win32</AdditionalLibraryDirectories>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <Lib>
+    </Lib>
+    <PostBuildEvent>
+      <Command>echo F|xcopy "$(SolutionDir)..\external\SDL2-2.0.4\lib\x86\SDL2.dll" "$(OutDir)SDL2.dll" /Y
+echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll" "$(OutDir)glew32.dll" /Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Components\Component.cpp" />
+    <ClCompile Include="Components\TextTextureGraphicsComponent.cpp" />
+    <ClCompile Include="Components\TransformationComponent.cpp" />
+    <ClCompile Include="DataModel\TextStyle.cpp" />
+    <ClCompile Include="DataModel\TextStyleDeserializer.cpp" />
+    <ClCompile Include="DataModel\TextStyleType.cpp" />
+    <ClCompile Include="DataModel\TextStyleTypeCharacter.cpp" />
+    <ClCompile Include="driver.cpp" />
+    <ClCompile Include="Entities\TextEntity.cpp" />
+    <ClCompile Include="Entities\_Managers\EntitiesManager.cpp" />
+    <ClCompile Include="Framework\Window.cpp" />
+    <ClCompile Include="Framework\_Managers\ErrorLogManager.cpp" />
+    <ClCompile Include="Framework\_Managers\WindowManager.cpp" />
+    <ClCompile Include="Graphics\RenderPass.cpp" />
+    <ClCompile Include="Graphics\Shader.cpp" />
+    <ClCompile Include="Graphics\ShaderDeserializer.cpp" />
+    <ClCompile Include="Graphics\TestRenderPass.cpp" />
+    <ClCompile Include="Graphics\TextRenderPass.cpp" />
+    <ClCompile Include="Graphics\TextTexture.cpp" />
+    <ClCompile Include="Graphics\TextTextureDeserializer.cpp" />
+    <ClCompile Include="Graphics\_Managers\GraphicsManager.cpp" />
+    <ClCompile Include="Math\Trig.cpp" />
+    <ClCompile Include="Math\Vector2D.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Components\Component.h" />
+    <ClInclude Include="Components\TextTextureGraphicsComponent.h" />
+    <ClInclude Include="Components\TransformationComponent.h" />
+    <ClInclude Include="DataModel\TextStyle.h" />
+    <ClInclude Include="DataModel\TextStyleDeserializer.h" />
+    <ClInclude Include="DataModel\TextStyleType.h" />
+    <ClInclude Include="DataModel\TextStyleTypeCharacter.h" />
+    <ClInclude Include="Entities\TextEntity.h" />
+    <ClInclude Include="Entities\_Managers\EntitiesManager.h" />
+    <ClInclude Include="Framework\Window.h" />
+    <ClInclude Include="Framework\_Managers\ErrorLogManager.h" />
+    <ClInclude Include="Framework\_Managers\WindowManager.h" />
+    <ClInclude Include="Graphics\RenderPass.h" />
+    <ClInclude Include="Graphics\Shader.h" />
+    <ClInclude Include="Graphics\ShaderDeserializer.h" />
+    <ClInclude Include="Graphics\TestRenderPass.h" />
+    <ClInclude Include="Graphics\TextRenderPass.h" />
+    <ClInclude Include="Graphics\TextTexture.h" />
+    <ClInclude Include="Graphics\TextTextureDeserializer.h" />
+    <ClInclude Include="Graphics\_Managers\GraphicsManager.h" />
+    <ClInclude Include="Math\Trig.h" />
+    <ClInclude Include="Math\Vector2D.h" />
+    <ClInclude Include="Utilities\Deserializer.h" />
+    <ClInclude Include="Utilities\HasId.h" />
+    <ClInclude Include="Utilities\JsonDeserializer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\data\shaders\fragment\textrenderpass.glfs" />
+    <None Include="..\..\data\shaders\vertex\textrenderpass.glvs" />
+    <None Include="Entities\_Managers\EntitiesManager.inl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </None>
+    <None Include="Graphics\_Managers\GraphicsManager.inl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </None>
+    <None Include="Utilities\Deserializer.inl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </None>
+    <None Include="Utilities\HasId.inl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </None>
+    <None Include="Utilities\JsonDeserializer.inl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </None>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

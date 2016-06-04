@@ -1,0 +1,3 @@
+- ErrorLog singleton
+- WindowData class?
+- WindowRenderer class?

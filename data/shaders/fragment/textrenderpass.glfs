@@ -1,0 +1,36 @@
+#version 140
+
+#define TEXTARRAY_SIZE 1000
+
+in vec2 v_texCoord;
+
+out vec4 o_fragmentColor;
+
+layout(std140) uniform u_textBlock
+{
+	uvec2 u_textDimensions;
+	// arrays are padded out to the size of a vec4, 
+	// so we might as well just use an array of vec4 values
+	uvec4 u_textArray[TEXTARRAY_SIZE];
+};
+uniform vec3 u_textColor;
+
+void main() 
+{ 
+	// we multiply the texture coordinate by 100 first, so that we safely
+	// treat it as an integer percentage value
+	uint xIndex = (u_textDimensions.x * uint(100 * v_texCoord.x)) / 100;
+	uint yIndex = (u_textDimensions.y * uint(100 * v_texCoord.y)) / 100;
+	uint index = (yIndex * u_textDimensions.x) + xIndex;
+
+	// >> 2, since there are four ACTUAL textArray values for every one uvec4
+	// & 0x3, to figure out which value of the uvec4 we want
+	uint a = u_textArray[index >> 2][index & 0x3];
+	
+	//uint length = textDimensions.x * textDimensions.y;
+	//o_fragmentColor = vec4((u_textDimensions.x - xIndex) / 19.0, 0, 0, 1);
+	//o_fragmentColor = vec4(0, (u_textDimensions.y - yIndex) / 32.0, 0, 1);	
+	//o_fragmentColor = vec4(0, 0, (length - index) / 608.0, 1);
+	
+	o_fragmentColor = vec4(u_textColor.r * a, u_textColor.g * a, u_textColor.b * a, a);
+}
