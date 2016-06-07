@@ -8,6 +8,7 @@
 // std
 #include <map>
 #include <string>
+#include <fstream>
 
 
 namespace MIMIc { namespace Utilities {
@@ -19,18 +20,41 @@ namespace MIMIc { namespace Utilities {
             JsonDeserializer();
             JsonDeserializer(const JsonDeserializer& rhs);
             virtual ~JsonDeserializer();
+
+            virtual JsonDeserializer& operator=(const JsonDeserializer& rhs)
+            {
+                m_cache = rhs.m_cache;
+                m_fstream = rhs.m_fstream;
+            }
+
+            void Start(const char* const fileName);
+            void End();
             
 
         protected:
-            const char* ReadObjectStart(const bool hasName);
+            static const char* s_openObject,
+                               s_closeObject,
+                               s_openArray,
+                               s_closeArray,
+                               s_objectDelimiter,
+                               s_stringDelimiter;
+
+            void ReadObjectStart(char** name);
             void ReadObjectEnd();
 
-            const char* ReadArrayStart(const bool hasName);
+            void ReadArrayStart(char** name);
             void ReadArrayEnd();
 
-            const char* ReadNamedStringValue();
-            const char* ReadNamedBinaryValue();
-            const char* ReadBinaryValue(const unsigned length);
+            void ReadNamedStringValue(char** name, char** value);
+            void ReadNamedBinaryValue(char** name, char** value);
+            void ReadBinaryValue(const unsigned length, char** value);
+
+
+        private:
+            std::ifstream m_fstream;
+
+            void ReadString(char** value);
+            void ReadToDelimiter(char** value, const char delimiter, bool isString);
     };
 
 } }

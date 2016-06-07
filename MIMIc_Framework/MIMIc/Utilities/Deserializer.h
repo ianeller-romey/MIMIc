@@ -21,7 +21,7 @@ namespace MIMIc { namespace Utilities {
                 m_cache = rhs.m_cache;
             }
 
-            T Get(const KEYTYPE& key);
+            VALUETYPE Get(const KEYTYPE& key);
 
         protected:
             std::map<KEYTYPE, VALUETYPE> m_cache;

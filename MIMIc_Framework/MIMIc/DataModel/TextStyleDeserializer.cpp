@@ -1,71 +1,40 @@
 
-#include "TextTextureDeserializer.h"
-
-#include <string>   // std::string
-#include <fstream>  // std::ifstream
+// DataModel
+#include "TextStyleDeserializer.h"
 
 
-namespace MIMIc { namespace Graphics {
+namespace MIMIc { namespace DataModel {
 
-    TextTextureDeserializer* TextTextureDeserializer::s_instance = NULL;
-
-    unsigned TextTextureDeserializer::s_defaultTextureSize = 19 * 32;
+    TextStyleDeserializer* TextStyleDeserializer::s_instance = NULL;
 
 
-    TextTextureDeserializer& TextTextureDeserializer::INSTANCE()
+    TextStyleDeserializer& TextStyleDeserializer::INSTANCE()
     {
         if(!s_instance)
-            s_instance = new TextTextureDeserializer();
+            s_instance = new TextStyleDeserializer();
 
         return *s_instance;
     }
 
 
-    TextTextureDeserializer::~TextTextureDeserializer()
+    TextStyleDeserializer::~TextStyleDeserializer()
     {
         for(auto begin = m_cache.begin(), end = m_cache.end(); begin != end; ++begin)
         {
-            auto textureBytes = begin->second.GetTextureForEditing();
-            delete textureBytes;
+            // TODO: 
+            // Delete dynamically allocated EVERYTHING 
         }
     }
     
     
-    TextTextureDeserializer::TextTextureDeserializer()
+    TextStyleDeserializer::TextStyleDeserializer()
     {
     }
 
     
-    TextTexture TextTextureDeserializer::Deserialize(const char* fileName) const
+    TextStyle TextStyleDeserializer::Deserialize(const std::string& fileName) const
     {
-        std::string textureBytes;
-        textureBytes.reserve(s_defaultTextureSize);
-
-        std::ifstream file(fileName);
-        int textureWidth = 0,
-            textureHeight = 0;
-        if(file.is_open())
-        {
-            std::string line;
-            while(std::getline(file, line))
-            {
-                textureBytes.append(line);
-
-                if(textureWidth != 0 && textureWidth != line.length())
-                    // Width needs to be uniform
-                    throw; // TODO
-                else
-                    textureWidth = line.length();
-
-                ++textureHeight;
-            }
-        }
-        file.close();
-
-        TEXTTEXTURECHAR* textureBytesFinal = new TEXTTEXTURECHAR[textureBytes.size()];
-        for(int i = 0, j = textureBytes.size(); i < j; ++i)
-            textureBytesFinal[i] = (textureBytes[i] - 48); // lazy ATOI
-        return TextTexture(textureBytesFinal, textureWidth, textureHeight);
+        
     }
 
 } }

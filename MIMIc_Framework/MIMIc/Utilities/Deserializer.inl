@@ -1,27 +1,27 @@
 
 namespace MIMIc { namespace Utilities {    
 
-    template <typename T>
-    Deserializer<T>::Deserializer()
+    template <typename KEYTYPE, typename VALUETYPE>
+    Deserializer<KEYTYPE, VALUETYPE>::Deserializer()
     {
     }
 
     
-    template <typename T>
-    Deserializer<T>::Deserializer(const Deserializer<T>& rhs) :
+    template <typename KEYTYPE, typename VALUETYPE>
+    Deserializer<KEYTYPE, VALUETYPE>::Deserializer(const Deserializer<T>& rhs) :
         m_cache(rhs.m_cache)
     {
     }
 
 
-    template <typename T>
-    Deserializer<T>::~Deserializer()
+    template <typename KEYTYPE, typename VALUETYPE>
+    Deserializer<KEYTYPE, VALUETYPE>::~Deserializer()
     {
     }
 
     
-    template <typename T>
-    T Deserializer<T>::Get(const KEYTYPE& key)
+    template <typename KEYTYPE, typename VALUETYPE>
+    T Deserializer<KEYTYPE, VALUETYPE>::Get(const KEYTYPE& key)
     {
         if(m_cache.count(key))
             return m_cache[key];
