@@ -139,9 +139,6 @@
     <ClCompile Include="Graphics\TextTexture.cpp">
       <Filter>MIMIc\Graphics\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics\TextTextureDeserializer.cpp">
-      <Filter>MIMIc\Graphics\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Graphics\TestRenderPass.cpp">
       <Filter>MIMIc\Graphics\Source</Filter>
     </ClCompile>
@@ -208,9 +205,6 @@
       <Filter>MIMIc\Framework\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\TextTexture.h">
-      <Filter>MIMIc\Graphics\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Graphics\TextTextureDeserializer.h">
       <Filter>MIMIc\Graphics\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\TestRenderPass.h">

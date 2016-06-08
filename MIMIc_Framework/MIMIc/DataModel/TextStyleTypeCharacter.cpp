@@ -19,7 +19,7 @@ namespace MIMIc { namespace DataModel {
     }
 
 
-    TextStyleTypeCharacter::TextStyleTypeCharacter(CHARACTERDATA* const data, const unsigned characterWidth, const unsigned characterHeight, const unsigned x, const unsigned y) :
+    TextStyleTypeCharacter::TextStyleTypeCharacter(CHARACTERDATA* const data, const char characterWidth, const char characterHeight, const char x, const char y) :
         m_data(0),
         m_x(x),
         m_y(y),
@@ -59,31 +59,31 @@ namespace MIMIc { namespace DataModel {
     }
 
 
-    const unsigned TextStyleTypeCharacter::X() const
+    const char TextStyleTypeCharacter::X() const
     {
         return m_x;
     }
 
 
-    const unsigned TextStyleTypeCharacter::Y() const
+    const char TextStyleTypeCharacter::Y() const
     {
         return m_y;
     }
 
 
-    const unsigned TextStyleTypeCharacter::GetCharacterWidth() const
+    const char TextStyleTypeCharacter::GetCharacterWidth() const
     {
         return m_characterWidth;
     }
 
 
-    const unsigned TextStyleTypeCharacter::GetCharacterHeight() const
+    const char TextStyleTypeCharacter::GetCharacterHeight() const
     {
         return m_characterHeight;
     }
 
 
-    const unsigned TextStyleTypeCharacter::GetDataLength() const
+    const char TextStyleTypeCharacter::GetDataLength() const
     {
         return m_characterWidth * m_characterHeight;
     }
@@ -102,7 +102,7 @@ namespace MIMIc { namespace DataModel {
     }
 
 
-    void TextStyleTypeCharacter::SetData(CHARACTERDATA* const texture, const unsigned textureWidth, const unsigned textureHeight, const bool edited)
+    void TextStyleTypeCharacter::SetData(CHARACTERDATA* const texture, const char textureWidth, const char textureHeight, const bool edited)
     {
         DeleteData();
 

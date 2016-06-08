@@ -2,38 +2,47 @@
 #ifndef DATAMODEL_TEXTSTYLETYPECHARACTER_H
 #define DATAMODEL_TEXTSTYLETYPECHARACTER_H
 
-#define CHARACTERDATA unsigned
+#define CHARACTERDATA char
+
+
+namespace MIMIc { namespace DataModel {
+
+    class TextStyleDeserializer;
+
+} }
 
 
 namespace MIMIc { namespace DataModel {
 
     class TextStyleTypeCharacter
     {
+        friend TextStyleDeserializer;
+
         public:
             TextStyleTypeCharacter();
-            TextStyleTypeCharacter(CHARACTERDATA* const data, const unsigned characterWidth, const unsigned characterHeight, const unsigned x, const unsigned y);
+            TextStyleTypeCharacter(CHARACTERDATA* const data, const char characterWidth, const char characterHeight, const char x, const char y);
             TextStyleTypeCharacter(const TextStyleTypeCharacter& rhs);
             ~TextStyleTypeCharacter();
 
             TextStyleTypeCharacter& operator=(const TextStyleTypeCharacter& rhs);
             
-            const unsigned X() const;
-            const unsigned Y() const;
-            const unsigned GetCharacterWidth() const;
-            const unsigned GetCharacterHeight() const;
-            const unsigned GetDataLength() const;
+            const char X() const;
+            const char Y() const;
+            const char GetCharacterWidth() const;
+            const char GetCharacterHeight() const;
+            const char GetDataLength() const;
             const CHARACTERDATA* const GetData() const;
             CHARACTERDATA* GetDataForEditing();
 
         private:
             CHARACTERDATA* m_data;
-            unsigned m_x,
-                     m_y,
-                     m_characterWidth,
-                     m_characterHeight;
+            char m_x,
+                 m_y,
+                 m_characterWidth,
+                 m_characterHeight;
             bool m_edited;
 
-            void SetData(CHARACTERDATA* const texture, const unsigned textureWidth, const unsigned textureHeight, const bool edited);
+            void SetData(CHARACTERDATA* const texture, const char textureWidth, const char textureHeight, const bool edited);
             void DeleteData();
     };
 

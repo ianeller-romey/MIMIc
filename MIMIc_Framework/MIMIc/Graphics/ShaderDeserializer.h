@@ -2,9 +2,11 @@
 #ifndef GRAPHICS_SHADERDESERIALIZER_H
 #define GRAPHICS_SHADERDESERIALIZER_H
 
-#include "Deserializer.h"
-
+// Graphics
 #include "Shader.h"
+
+// Utilities
+#include "Deserializer.h"
 
 
 #define TEXTTEXTUREDESERIALIZERINSTANCE MIMIc::Graphics::ShaderDeserializer::INSTANCE()
@@ -12,7 +14,7 @@
 
 namespace MIMIc { namespace Graphics {
 
-    class ShaderDeserializer : public Utilities::Deserializer<Shader>
+    class ShaderDeserializer : public Utilities::Deserializer<std::string, Shader>
     {
         public:
             static ShaderDeserializer& INSTANCE();
@@ -24,7 +26,7 @@ namespace MIMIc { namespace Graphics {
             
             static ShaderDeserializer* s_instance;
 
-            virtual Shader Deserialize(const char* file) const;
+            virtual Shader Deserialize(const std::string& file) const;
     };
 
 } }

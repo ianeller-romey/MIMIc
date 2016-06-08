@@ -19,6 +19,8 @@ namespace MIMIc { namespace Utilities {
             virtual Deserializer& operator=(const Deserializer& rhs)
             {
                 m_cache = rhs.m_cache;
+
+                return *this;
             }
 
             VALUETYPE Get(const KEYTYPE& key);

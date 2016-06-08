@@ -12,8 +12,17 @@
 
 namespace MIMIc { namespace DataModel {
 
+    class TextStyleDeserializer;
+
+} }
+
+
+namespace MIMIc { namespace DataModel {
+
     class TextStyleType
     {
+        friend class TextStyleDeserializer;
+
         public:
             TextStyleType();
             TextStyleType(const TextStyleType& rhs);

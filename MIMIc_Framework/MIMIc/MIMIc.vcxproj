@@ -110,7 +110,6 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
     <ClCompile Include="Graphics\TestRenderPass.cpp" />
     <ClCompile Include="Graphics\TextRenderPass.cpp" />
     <ClCompile Include="Graphics\TextTexture.cpp" />
-    <ClCompile Include="Graphics\TextTextureDeserializer.cpp" />
     <ClCompile Include="Graphics\_Managers\GraphicsManager.cpp" />
     <ClCompile Include="Math\Trig.cpp" />
     <ClCompile Include="Math\Vector2D.cpp" />
@@ -134,7 +133,6 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
     <ClInclude Include="Graphics\TestRenderPass.h" />
     <ClInclude Include="Graphics\TextRenderPass.h" />
     <ClInclude Include="Graphics\TextTexture.h" />
-    <ClInclude Include="Graphics\TextTextureDeserializer.h" />
     <ClInclude Include="Graphics\_Managers\GraphicsManager.h" />
     <ClInclude Include="Math\Trig.h" />
     <ClInclude Include="Math\Vector2D.h" />

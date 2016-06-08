@@ -19,7 +19,7 @@ namespace MIMIc { namespace DataModel {
         public:
             static TextStyleDeserializer& INSTANCE();
 
-            ~TextStyleDeserializer();
+            virtual ~TextStyleDeserializer();
 
         private:
             TextStyleDeserializer();

@@ -19,42 +19,51 @@ namespace MIMIc { namespace Utilities {
         public:
             JsonDeserializer();
             JsonDeserializer(const JsonDeserializer& rhs);
-            virtual ~JsonDeserializer();
-
-            virtual JsonDeserializer& operator=(const JsonDeserializer& rhs)
-            {
-                m_cache = rhs.m_cache;
-                m_fstream = rhs.m_fstream;
-            }
-
-            void Start(const char* const fileName);
-            void End();
-            
+            virtual ~JsonDeserializer();     
 
         protected:
-            static const char* s_openObject,
-                               s_closeObject,
-                               s_openArray,
-                               s_closeArray,
-                               s_objectDelimiter,
-                               s_stringDelimiter;
+            virtual JsonDeserializer& operator=(const JsonDeserializer& rhs);   
 
-            void ReadObjectStart(char** name);
-            void ReadObjectEnd();
+            static const char *s_openObject,
+                              *s_closeObject,
+                              *s_openArray,
+                              *s_closeArray,
+                              *s_valueDelimiter,
+                              *s_collectionDelimiter,
+                              *s_stringDelimiter,
+                              *s_newlineDelimiter;
 
-            void ReadArrayStart(char** name);
-            void ReadArrayEnd();
+            void Start(const char* const fileName) const;
+            void End() const;
 
-            void ReadNamedStringValue(char** name, char** value);
-            void ReadNamedBinaryValue(char** name, char** value);
-            void ReadBinaryValue(const unsigned length, char** value);
+            bool ReadObjectStart(char** namePointer, char* nameLocation) const;
+            bool ReadObjectEnd() const;
 
+            bool ReadArrayStart(char** name, char* nameLocation) const;
+            bool ReadArrayStringValue(char** valuePointer, char* valueLocation, bool& continueOn) const;
+            template <typename T>
+            bool ReadArrayBinaryValue(T* valueLocation, bool& continueOn) const;
+            bool ReadNextArray(bool& continueOn) const;
+            bool ReadArrayEnd() const;
+
+            bool ReadNamedStringValue(char** namePointer, char* nameLocation, char** valuePointer, char* valueLocation) const;
+            template <typename T>
+            bool ReadNamedBinaryValue(char** namePointer, char* nameLocation, T* valueLocation) const;
+            bool ReadBinaryValueWithLength(const unsigned length, char* valueLocation) const;
+
+            bool AdvanceLine() const;
+            bool AdvanceComma() const;
+            bool AdvanceBracket() const;
+            bool AdvanceBrace() const;
 
         private:
-            std::ifstream m_fstream;
+            mutable std::ifstream m_fstream;
 
-            void ReadString(char** value);
-            void ReadToDelimiter(char** value, const char delimiter, bool isString);
+            bool ReadString(char** valuePointer, char* valueLocation) const;
+            template <typename T>
+            bool ReadBinaryValue(T* valueLocation) const;
+            bool ReadToDelimiter(const char* const delimiters, const unsigned numDelimiters, char* actualDelimiter) const;
+            bool IsDelimiter(const char value, const char* const delimiters, const unsigned numDelimiters, char* actualDelimiter) const;
     };
 
 } }

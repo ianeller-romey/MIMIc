@@ -24,7 +24,7 @@ namespace MIMIc { namespace Graphics {
     }
 
     
-    Shader ShaderDeserializer::Deserialize(const char* fileName) const
+    Shader ShaderDeserializer::Deserialize(const std::string& fileName) const
     {
         std::string shaderContent;
 
