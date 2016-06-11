@@ -1,6 +1,6 @@
 
 // Components
-#include "TextTextureGraphicsComponent.h"
+#include "TextCharacterGraphicsComponent.h"
 
 // Graphics
 #include "GraphicsManager.h"
@@ -75,12 +75,12 @@ namespace MIMIc { namespace Graphics { namespace Managers {
     }
 
 
-    Components::Component* const GraphicsManager::CreateTextTextureGraphicsComponent(Components::Component* transformationComponent, const char* const textTexture, const int renderPassId)
+    Components::Component* const GraphicsManager::CreateTextCharacterGraphicsComponent(Components::Component* transformationComponent, const char* const style, const char character, const int renderPassId)
     {
-        auto graphicsComponent = new Components::TextTextureGraphicsComponent(transformationComponent, textTexture);
+        auto graphicsComponent = new Components::TextCharacterGraphicsComponent(transformationComponent, style, character);
 
         auto renderPass = (TextRenderPass*)GetRenderPass(renderPassId);
-        renderPass->AddTextTextureGraphicsComponent(graphicsComponent);
+        renderPass->AddTextCharacterGraphicsComponent(graphicsComponent);
 
         m_graphicsComponents.push_back(graphicsComponent);
         return graphicsComponent;

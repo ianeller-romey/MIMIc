@@ -48,12 +48,12 @@ namespace MIMIc { namespace Entities { namespace Managers {
     }
 
 
-    TextEntity* const EntitiesManager::CreateTextEntity(const char* const textTexture, const int renderPassId)
+    TextEntity* const EntitiesManager::CreateTextEntity(const char* const style, const char character, const int renderPassId)
     {
         m_textEntities.push_back(EntityAndTransformation<TextEntity>());
         auto et = m_textEntities.back();
 
-        auto graphicsComponent = GRAPHICSMANAGERINSTANCE.CreateTextTextureGraphicsComponent(&et.m_transformationComponent, textTexture, renderPassId);
+        auto graphicsComponent = GRAPHICSMANAGERINSTANCE.CreateTextCharacterGraphicsComponent(&et.m_transformationComponent, style, character, renderPassId);
 
         new (et.m_entity) TextEntity(&et.m_transformationComponent, graphicsComponent);
 
@@ -65,7 +65,8 @@ namespace MIMIc { namespace Entities { namespace Managers {
                                                         const float rotation, 
                                                         const Math::Vector2D& scale,
                                                         const Math::Vector2D& velocity, 
-                                                        const char* const textTexture, 
+                                                        const char* const style,
+                                                        const char character,
                                                         const int renderPassId)
     {
         m_textEntities.push_back(EntityAndTransformation<TextEntity>());
@@ -73,7 +74,7 @@ namespace MIMIc { namespace Entities { namespace Managers {
 
         et.m_transformationComponent = Components::TransformationComponent(position, rotation, scale, velocity);
 
-        auto graphicsComponent = GRAPHICSMANAGERINSTANCE.CreateTextTextureGraphicsComponent(&et.m_transformationComponent, textTexture, renderPassId);
+        auto graphicsComponent = GRAPHICSMANAGERINSTANCE.CreateTextCharacterGraphicsComponent(&et.m_transformationComponent, style, character, renderPassId);
 
         new (et.m_entity) TextEntity(&et.m_transformationComponent, graphicsComponent);
 

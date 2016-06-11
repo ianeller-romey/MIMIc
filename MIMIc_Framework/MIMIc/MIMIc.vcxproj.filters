@@ -136,9 +136,6 @@
     <ClCompile Include="Framework\Window.cpp">
       <Filter>MIMIc\Framework\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics\TextTexture.cpp">
-      <Filter>MIMIc\Graphics\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Graphics\TestRenderPass.cpp">
       <Filter>MIMIc\Graphics\Source</Filter>
     </ClCompile>
@@ -150,9 +147,6 @@
     </ClCompile>
     <ClCompile Include="Graphics\Shader.cpp">
       <Filter>MIMIc\Graphics\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\TextTextureGraphicsComponent.cpp">
-      <Filter>MIMIc\Components\Source</Filter>
     </ClCompile>
     <ClCompile Include="Entities\_Managers\EntitiesManager.cpp">
       <Filter>MIMIc\Entities\_Managers\Source</Filter>
@@ -187,6 +181,15 @@
     <ClCompile Include="DataModel\TextStyleTypeCharacter.cpp">
       <Filter>MIMIc\DataModel\Source</Filter>
     </ClCompile>
+    <ClCompile Include="DataModel\CharacterXYDictionary.cpp">
+      <Filter>MIMIc\DataModel\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\TextCharacterGraphicsComponent.cpp">
+      <Filter>MIMIc\Components\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DataModel\CharacterXYDescriptor.cpp">
+      <Filter>MIMIc\DataModel\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graphics\_Managers\GraphicsManager.h">
@@ -204,9 +207,6 @@
     <ClInclude Include="Framework\Window.h">
       <Filter>MIMIc\Framework\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics\TextTexture.h">
-      <Filter>MIMIc\Graphics\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Graphics\TestRenderPass.h">
       <Filter>MIMIc\Graphics\Headers</Filter>
     </ClInclude>
@@ -221,9 +221,6 @@
     </ClInclude>
     <ClInclude Include="Graphics\Shader.h">
       <Filter>MIMIc\Graphics\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\TextTextureGraphicsComponent.h">
-      <Filter>MIMIc\Components\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Components\Component.h">
       <Filter>MIMIc\Components\Headers</Filter>
@@ -261,6 +258,18 @@
     <ClInclude Include="Utilities\JsonDeserializer.h">
       <Filter>MIMIc\Utilities\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="DataModel\CharacterXYDictionary.h">
+      <Filter>MIMIc\DataModel\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\NTuple.h">
+      <Filter>MIMIc\Utilities\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\TextCharacterGraphicsComponent.h">
+      <Filter>MIMIc\Components\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DataModel\CharacterXYDescriptor.h">
+      <Filter>MIMIc\DataModel\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="TODO.txt" />
@@ -285,6 +294,9 @@
       <Filter>MIMIc\Entities\_Managers\Headers</Filter>
     </None>
     <None Include="Utilities\JsonDeserializer.inl">
+      <Filter>MIMIc\Utilities\Headers</Filter>
+    </None>
+    <None Include="Utilities\NTuple.inl">
       <Filter>MIMIc\Utilities\Headers</Filter>
     </None>
   </ItemGroup>

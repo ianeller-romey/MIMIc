@@ -3,7 +3,7 @@
 #define GRAPHICS_TEXTRENDERPASS_H
 
 // Components
-#include "TextTextureGraphicsComponent.h"
+#include "TextCharacterGraphicsComponent.h"
 
 // Graphics
 #include "RenderPass.h"
@@ -34,7 +34,7 @@ namespace MIMIc { namespace Graphics {
             void SetEmulatedConsoleWidth(const unsigned width);
             void SetEmulatedConsoleHeight(const unsigned height);
 
-            void AddTextTextureGraphicsComponent(Components::TextTextureGraphicsComponent* const graphicsComponent);
+            void AddTextCharacterGraphicsComponent(Components::TextCharacterGraphicsComponent* const graphicsComponent);
             virtual bool RemoveGraphicsComponent(Components::Component* const graphicsComponent);
 
         private:
@@ -64,11 +64,11 @@ namespace MIMIc { namespace Graphics {
             unsigned m_emulatedConsoleWidth,
                      m_emulatedConsoleHeight;
 
-            std::list<Components::TextTextureGraphicsComponent*> m_textTextureGraphicsComponents;
+            std::list<Components::TextCharacterGraphicsComponent*> m_TextCharacterGraphicsComponents;
 
             virtual bool InitializeOpenGL();
 
-            void GenerateTextTextureData(Components::TextTextureGraphicsComponent* component, ShaderData_TextBlock* shaderData, float** vertexData) const;
+            void GenerateTextTextureData(Components::TextCharacterGraphicsComponent* component, ShaderData_TextBlock* shaderData, float** vertexData) const;
     };
 
 } }

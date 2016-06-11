@@ -25,7 +25,7 @@ void init()
     auto renderPass = GRAPHICSMANAGERINSTANCE.CreateRenderPass<MIMIc::Graphics::TextRenderPass>(window);
     auto renderPassId = renderPass->GetId();
 
-    auto entity = ENTITIESMANAGERINSTANCE.CreateTextEntity("C:\\Users\\v-iaelle\\Documents\\GitHub\\MIMIc\\data\\dat\\text_0_0.dat", renderPassId);
+    auto entity = ENTITIESMANAGERINSTANCE.CreateTextEntity("C:\\Users\\v-iaelle\\Documents\\GitHub\\MIMIc\\data\\dat\\default.dat", 'a', renderPassId);
 }
 
 

@@ -3,7 +3,7 @@
 #include "TextEntity.h"
 
 // Components
-#include "TextTextureGraphicsComponent.h"
+#include "TextCharacterGraphicsComponent.h"
 
 
 namespace MIMIc { namespace Entities {

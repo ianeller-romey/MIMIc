@@ -47,9 +47,10 @@ namespace MIMIc { namespace Utilities {
 
 
     template <typename KEYTYPE, typename VALUETYPE>
-    void JsonDeserializer<KEYTYPE, VALUETYPE>::Start(const char* const fileName) const
+    bool JsonDeserializer<KEYTYPE, VALUETYPE>::Start(const char* const fileName) const
     {
-        m_fstream.open(fileName, std::ios_base::in);
+       m_fstream.open(fileName, std::ios_base::in);
+       return m_fstream.is_open();
     }
 
 
@@ -154,9 +155,16 @@ namespace MIMIc { namespace Utilities {
     template <typename KEYTYPE, typename VALUETYPE>
     bool JsonDeserializer<KEYTYPE, VALUETYPE>::ReadNamedStringValue(char** namePointer, char* nameLocation, char** valuePointer, char* valueLocation) const
     {
-        ReadString(namePointer, nameLocation);
-        ReadToDelimiter(s_valueDelimiter, 1, 0);
-        ReadString(valuePointer, valueLocation);
+        if(!ReadString(namePointer, nameLocation))
+            return false;
+
+        if(!ReadToDelimiter(s_valueDelimiter, 1, 0))
+            return false;
+
+        if(!ReadString(valuePointer, valueLocation))
+            return false;
+        
+        return true;
     }
 
 
@@ -164,9 +172,16 @@ namespace MIMIc { namespace Utilities {
     template <typename T>
     bool JsonDeserializer<KEYTYPE, VALUETYPE>::ReadNamedBinaryValue(char** namePointer, char* nameLocation, T* valueLocation) const
     {
-        ReadString(namePointer, nameLocation);
-        ReadToDelimiter(s_valueDelimiter, 1, 0);
-        ReadBinaryValue<T>(valueLocation);
+        if(!ReadString(namePointer, nameLocation))
+            return false;
+
+        if(!ReadToDelimiter(s_valueDelimiter, 1, 0))
+            return false;
+
+        if(!ReadBinaryValue<T>(valueLocation))
+            return false;
+        
+        return true;
     }
 
 

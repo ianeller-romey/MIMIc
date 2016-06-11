@@ -92,8 +92,10 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Components\Component.cpp" />
-    <ClCompile Include="Components\TextTextureGraphicsComponent.cpp" />
+    <ClCompile Include="Components\TextCharacterGraphicsComponent.cpp" />
     <ClCompile Include="Components\TransformationComponent.cpp" />
+    <ClCompile Include="DataModel\CharacterXYDescriptor.cpp" />
+    <ClCompile Include="DataModel\CharacterXYDictionary.cpp" />
     <ClCompile Include="DataModel\TextStyle.cpp" />
     <ClCompile Include="DataModel\TextStyleDeserializer.cpp" />
     <ClCompile Include="DataModel\TextStyleType.cpp" />
@@ -109,15 +111,16 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
     <ClCompile Include="Graphics\ShaderDeserializer.cpp" />
     <ClCompile Include="Graphics\TestRenderPass.cpp" />
     <ClCompile Include="Graphics\TextRenderPass.cpp" />
-    <ClCompile Include="Graphics\TextTexture.cpp" />
     <ClCompile Include="Graphics\_Managers\GraphicsManager.cpp" />
     <ClCompile Include="Math\Trig.cpp" />
     <ClCompile Include="Math\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Component.h" />
-    <ClInclude Include="Components\TextTextureGraphicsComponent.h" />
+    <ClInclude Include="Components\TextCharacterGraphicsComponent.h" />
     <ClInclude Include="Components\TransformationComponent.h" />
+    <ClInclude Include="DataModel\CharacterXYDescriptor.h" />
+    <ClInclude Include="DataModel\CharacterXYDictionary.h" />
     <ClInclude Include="DataModel\TextStyle.h" />
     <ClInclude Include="DataModel\TextStyleDeserializer.h" />
     <ClInclude Include="DataModel\TextStyleType.h" />
@@ -132,13 +135,13 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
     <ClInclude Include="Graphics\ShaderDeserializer.h" />
     <ClInclude Include="Graphics\TestRenderPass.h" />
     <ClInclude Include="Graphics\TextRenderPass.h" />
-    <ClInclude Include="Graphics\TextTexture.h" />
     <ClInclude Include="Graphics\_Managers\GraphicsManager.h" />
     <ClInclude Include="Math\Trig.h" />
     <ClInclude Include="Math\Vector2D.h" />
     <ClInclude Include="Utilities\Deserializer.h" />
     <ClInclude Include="Utilities\HasId.h" />
     <ClInclude Include="Utilities\JsonDeserializer.h" />
+    <ClInclude Include="Utilities\NTuple.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="TODO.txt" />
@@ -163,6 +166,10 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </None>
     <None Include="Utilities\JsonDeserializer.inl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </None>
+    <None Include="Utilities\NTuple.inl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </None>

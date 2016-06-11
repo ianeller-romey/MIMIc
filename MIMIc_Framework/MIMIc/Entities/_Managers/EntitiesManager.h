@@ -29,12 +29,13 @@ namespace MIMIc { namespace Entities { namespace Managers {
             void Update();
             bool Shutdown();
 
-            TextEntity* const CreateTextEntity(const char* const textTexture, const int renderPassId);
+            TextEntity* const CreateTextEntity(const char* const style, const char character, const int renderPassId);
             TextEntity* const CreateTextEntity(const Math::Vector2D& position, 
                                                const float rotation, 
                                                const Math::Vector2D& scale,
                                                const Math::Vector2D& velocity, 
-                                               const char* const textTexture, 
+                                               const char* const style,
+                                               const char character,
                                                const int renderPassId);
             
         private:

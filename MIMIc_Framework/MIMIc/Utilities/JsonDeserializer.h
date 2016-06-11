@@ -22,8 +22,6 @@ namespace MIMIc { namespace Utilities {
             virtual ~JsonDeserializer();     
 
         protected:
-            virtual JsonDeserializer& operator=(const JsonDeserializer& rhs);   
-
             static const char *s_openObject,
                               *s_closeObject,
                               *s_openArray,
@@ -33,7 +31,7 @@ namespace MIMIc { namespace Utilities {
                               *s_stringDelimiter,
                               *s_newlineDelimiter;
 
-            void Start(const char* const fileName) const;
+            bool Start(const char* const fileName) const;
             void End() const;
 
             bool ReadObjectStart(char** namePointer, char* nameLocation) const;

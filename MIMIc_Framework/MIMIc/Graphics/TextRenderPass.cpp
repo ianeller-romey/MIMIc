@@ -1,6 +1,6 @@
 
 // Components
-#include "TextTextureGraphicsComponent.h"
+#include "TextCharacterGraphicsComponent.h"
 #include "TransformationComponent.h"
 
 // Graphics
@@ -159,7 +159,7 @@ namespace MIMIc { namespace Graphics {
         // Bind the UBO
         glBindBuffer(GL_UNIFORM_BUFFER, m_glFragmentUBO);
 
-        for(auto begin = m_textTextureGraphicsComponents.begin(), end = m_textTextureGraphicsComponents.end(); begin != end; ++begin)
+        for(auto begin = m_TextCharacterGraphicsComponents.begin(), end = m_TextCharacterGraphicsComponents.end(); begin != end; ++begin)
         {
             GenerateTextTextureData(*begin, &m_shaderData, (float**)&vertexData);
 
@@ -193,23 +193,23 @@ namespace MIMIc { namespace Graphics {
     }
 
 
-    void TextRenderPass::AddTextTextureGraphicsComponent(Components::TextTextureGraphicsComponent* const graphicsComponent)
+    void TextRenderPass::AddTextCharacterGraphicsComponent(Components::TextCharacterGraphicsComponent* const graphicsComponent)
     {
-        m_textTextureGraphicsComponents.push_back(graphicsComponent);
+        m_TextCharacterGraphicsComponents.push_back(graphicsComponent);
     }
 
 
     bool TextRenderPass::RemoveGraphicsComponent(Components::Component* const graphicsComponent)
     {
-        auto textTextureGraphicsComponent = dynamic_cast<Components::TextTextureGraphicsComponent*>(graphicsComponent);
-        if(textTextureGraphicsComponent != 0)
+        auto TextCharacterGraphicsComponent = dynamic_cast<Components::TextCharacterGraphicsComponent*>(graphicsComponent);
+        if(TextCharacterGraphicsComponent != 0)
         {
-            for(auto begin = m_textTextureGraphicsComponents.begin(), end= m_textTextureGraphicsComponents.end(); begin != end; ++begin)
+            for(auto begin = m_TextCharacterGraphicsComponents.begin(), end= m_TextCharacterGraphicsComponents.end(); begin != end; ++begin)
             {
                 auto component = *begin;
-                if(component == textTextureGraphicsComponent)
+                if(component == TextCharacterGraphicsComponent)
                 {
-                    m_textTextureGraphicsComponents.erase(begin);
+                    m_TextCharacterGraphicsComponents.erase(begin);
                     return true;
                 }
             }
@@ -358,18 +358,18 @@ namespace MIMIc { namespace Graphics {
         return true;
     }
 
-    void TextRenderPass::GenerateTextTextureData(Components::TextTextureGraphicsComponent* component, ShaderData_TextBlock* shaderData, float** vertexData) const
+    void TextRenderPass::GenerateTextTextureData(Components::TextCharacterGraphicsComponent* component, ShaderData_TextBlock* shaderData, float** vertexData) const
     {
-        auto textTexture = component->GetTextTexture();
-        auto textureWidth = textTexture->GetTextureWidth();
-        auto textureHeight = textTexture->GetTextureHeight();
+        auto textCharacter = component->GetTextStyleTypeCharacter();
+        auto textureWidth = textCharacter->GetCharacterWidth(),
+             textureHeight = textCharacter->GetCharacterHeight();
 
         // set texture width and texture height
-        memcpy(shaderData->m_textDimensions, &textureWidth, sizeof(TEXTTEXTURECHAR));
-        memcpy(shaderData->m_textDimensions + sizeof(TEXTTEXTURECHAR), &textureHeight, sizeof(TEXTTEXTURECHAR));
+        memcpy(shaderData->m_textDimensions, &textureWidth, sizeof(CHARACTERDATA));
+        memcpy(shaderData->m_textDimensions + sizeof(CHARACTERDATA), &textureHeight, sizeof(CHARACTERDATA));
 
         // set texture
-        memcpy(shaderData->m_textArray, textTexture->GetTexture(), sizeof(TEXTTEXTURECHAR) * textTexture->GetTextureLength());
+        memcpy(shaderData->m_textArray, textCharacter->GetData(), sizeof(CHARACTERDATA) * textCharacter->GetDataLength());
 
         auto transformationComponent = (Components::TransformationComponent*)(component->GetTransformationComponent());
     }

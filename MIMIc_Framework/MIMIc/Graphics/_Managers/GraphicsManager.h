@@ -31,7 +31,7 @@ namespace MIMIc { namespace Graphics { namespace Managers {
             RenderPass* const CreateRenderPass(Framework::Window* window);
             RenderPass* const GetRenderPass(const int renderPassId) const;
 
-            Components::Component* const CreateTextTextureGraphicsComponent(Components::Component* transformationComponent, const char* const textTexture, const int renderPassId);
+            Components::Component* const CreateTextCharacterGraphicsComponent(Components::Component* transformationComponent, const char* const style, const char character, const int renderPassId);
 
             void RemoveGraphicsComponent(Components::Component* const graphicsComponent);
             
