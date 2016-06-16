@@ -2,6 +2,9 @@
 // DataModel
 #include "TextStyleDeserializer.h"
 
+// Utilities
+#include "Path.h"
+
 
 namespace MIMIc { namespace DataModel {
 
@@ -37,6 +40,7 @@ namespace MIMIc { namespace DataModel {
         bool success = true;
         char characterWidth, characterHeight;
         TextStyle ts;
+        ts.m_style = Utilities::Path::GetFileNameWithoutExtension(key.c_str());
 
         success = Start(key.c_str());
         success = ReadObjectStart(0, 0);
@@ -56,6 +60,7 @@ namespace MIMIc { namespace DataModel {
 
             success = ReadNamedStringValue(0, 0, &tstType, 0);
             tst.m_type = tstType;
+            delete [] tstType;
 
             success = ReadArrayStart(0, 0);
 
@@ -63,6 +68,8 @@ namespace MIMIc { namespace DataModel {
             do
             {
                 TextStyleTypeCharacter tstc;
+                tstc.m_characterWidth = characterWidth;
+                tstc.m_characterHeight = characterHeight;
 
                 success = ReadObjectStart(0, 0);
 
@@ -70,6 +77,7 @@ namespace MIMIc { namespace DataModel {
                 success = ReadNamedBinaryValue<char>(0, 0, &tstc.m_y);
 
                 success = ReadArrayStart(0, 0);
+                success = AdvanceLine();
 
                 CHARACTERDATA* tstcData = new CHARACTERDATA[characterWidth * characterHeight];
                 for(char i = 0; i < characterHeight; ++i)
@@ -96,8 +104,10 @@ namespace MIMIc { namespace DataModel {
             ts.m_types.push_back(tst);
 
             if(!ReadNextArray(continueOn))
-                throw; // TODO
+                continueOn = false;
         } while(continueOn);
+
+        return ts;
     }
 
 } }

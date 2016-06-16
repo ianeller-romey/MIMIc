@@ -114,6 +114,7 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
     <ClCompile Include="Graphics\_Managers\GraphicsManager.cpp" />
     <ClCompile Include="Math\Trig.cpp" />
     <ClCompile Include="Math\Vector2D.cpp" />
+    <ClCompile Include="Utilities\Path.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Component.h" />
@@ -142,6 +143,7 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
     <ClInclude Include="Utilities\HasId.h" />
     <ClInclude Include="Utilities\JsonDeserializer.h" />
     <ClInclude Include="Utilities\NTuple.h" />
+    <ClInclude Include="Utilities\Path.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="TODO.txt" />

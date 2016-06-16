@@ -188,7 +188,7 @@ namespace MIMIc { namespace Utilities {
     template <typename KEYTYPE, typename VALUETYPE>
     bool JsonDeserializer<KEYTYPE, VALUETYPE>::ReadBinaryValueWithLength(const unsigned length, char* valueLocation) const
     {
-        m_fstream.get(valueLocation, length);
+        m_fstream.read(valueLocation, length);
 
         return !m_fstream.eof();
     }
@@ -227,13 +227,39 @@ namespace MIMIc { namespace Utilities {
 
 
     template <typename KEYTYPE, typename VALUETYPE>
+    bool JsonDeserializer<KEYTYPE, VALUETYPE>::ReadCharacter(std::ifstream& fstream, char& character)
+    {
+        if(fstream.eof())
+            return false;
+
+        fstream >> std::noskipws >> character;
+        return true;
+    }
+
+
+    template <typename KEYTYPE, typename VALUETYPE>
+    bool JsonDeserializer<KEYTYPE, VALUETYPE>::IsDelimiter(const char value, const char* const delimiters, const unsigned numDelimiters, char* actualDelimiter)
+    {
+        for(unsigned i = 0; i < numDelimiters; ++i)
+            if(value == delimiters[i])
+            {
+                if(actualDelimiter)
+                    *actualDelimiter = delimiters[i];
+                return true;
+            }
+
+        return false;
+    }
+
+
+    template <typename KEYTYPE, typename VALUETYPE>
     bool JsonDeserializer<KEYTYPE, VALUETYPE>::ReadString(char** valuePointer, char* valueLocation) const
     {
         unsigned valueLength;
         char c;
 
         // read to first string delimiter
-        while(m_fstream.get(&c, 1) && !m_fstream.eof())
+        while(ReadCharacter(m_fstream, c))
         {
             if(IsDelimiter(c, s_stringDelimiter, 1, 0))
                 break;
@@ -249,7 +275,7 @@ namespace MIMIc { namespace Utilities {
         // read length of value
         valueLength = 0;
         c = 0;
-        while(m_fstream.get(&c, 1) && !m_fstream.eof())
+        while(ReadCharacter(m_fstream, c))
         {
             if(IsDelimiter(c, s_stringDelimiter, 1, 0))
                 break;
@@ -277,7 +303,8 @@ namespace MIMIc { namespace Utilities {
             *valuePointer = (valueLocation) ? new (valueLocation) char[valueLengthFinal] : new char[valueLengthFinal];
 
             unsigned currentValue = 0;
-            while(m_fstream.get(&c, 1) && !m_fstream.eof() && currentValue < valueLength)
+            c = 0;
+            while(ReadCharacter(m_fstream, c) && currentValue < valueLength)
             {
                 (*valuePointer)[currentValue] = c;
                 ++currentValue;
@@ -295,7 +322,7 @@ namespace MIMIc { namespace Utilities {
     template <typename T>
     bool JsonDeserializer<KEYTYPE, VALUETYPE>::ReadBinaryValue(T* valueLocation) const
     {
-        m_fstream.get((char*)valueLocation, sizeof(T));
+        m_fstream.read((char*)valueLocation, sizeof(T));
 
         return !m_fstream.eof();
     }
@@ -306,28 +333,13 @@ namespace MIMIc { namespace Utilities {
     {
         char c;
 
-        while(m_fstream.get(&c, 1) && !m_fstream.eof())
+        while(ReadCharacter(m_fstream, c))
         {
             if(IsDelimiter(c, delimiters, numDelimiters, actualDelimiter))
                 break;
         }
 
         return !m_fstream.eof();
-    }
-
-
-    template <typename KEYTYPE, typename VALUETYPE>
-    bool JsonDeserializer<KEYTYPE, VALUETYPE>::IsDelimiter(const char value, const char* const delimiters, const unsigned numDelimiters, char* actualDelimiter) const
-    {
-        for(unsigned i = 0; i < numDelimiters; ++i)
-            if(value == delimiters[i])
-            {
-                if(actualDelimiter)
-                    *actualDelimiter = delimiters[i];
-                return true;
-            }
-
-        return false;
     }
 
 } }

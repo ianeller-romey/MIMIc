@@ -190,6 +190,9 @@
     <ClCompile Include="DataModel\CharacterXYDescriptor.cpp">
       <Filter>MIMIc\DataModel\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Utilities\Path.cpp">
+      <Filter>MIMIc\Utilities\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graphics\_Managers\GraphicsManager.h">
@@ -269,6 +272,9 @@
     </ClInclude>
     <ClInclude Include="DataModel\CharacterXYDescriptor.h">
       <Filter>MIMIc\DataModel\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Path.h">
+      <Filter>MIMIc\Utilities\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

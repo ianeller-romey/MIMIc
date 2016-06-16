@@ -57,11 +57,13 @@ namespace MIMIc { namespace Utilities {
         private:
             mutable std::ifstream m_fstream;
 
+            static bool ReadCharacter(std::ifstream& fstream, char& character);
+            static bool IsDelimiter(const char value, const char* const delimiters, const unsigned numDelimiters, char* actualDelimiter);
+
             bool ReadString(char** valuePointer, char* valueLocation) const;
             template <typename T>
             bool ReadBinaryValue(T* valueLocation) const;
             bool ReadToDelimiter(const char* const delimiters, const unsigned numDelimiters, char* actualDelimiter) const;
-            bool IsDelimiter(const char value, const char* const delimiters, const unsigned numDelimiters, char* actualDelimiter) const;
     };
 
 } }
