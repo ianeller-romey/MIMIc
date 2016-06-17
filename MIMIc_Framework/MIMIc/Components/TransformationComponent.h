@@ -21,25 +21,29 @@ namespace MIMIc { namespace Components {
 
             TransformationComponent& operator=(const TransformationComponent& rhs);
 
-            void Update();
+            virtual void Update();
             
             void Translate(const Math::Vector2D& translator);
 
             void SetPosition(const float x, const float y);
             bool PositionChanged() const;
             Math::Vector2D GetPositionChange() const;
+            Math::Vector2D GetPosition() const;
 
             void SetRotation(const float rotation);
             bool RotationChanged() const;
             float GetRotationChange() const;
+            float GetRotation() const;
 
             void SetScale(const float x, const float y);
             bool ScaleChanged() const;
             Math::Vector2D GetScaleChange() const;
+            Math::Vector2D GetScale() const;
 
             void SetVelocity(const float x, const float y);
             bool VelocityChanged() const;
             Math::Vector2D GetVelocityChange() const;
+            Math::Vector2D GetVelocity() const;
 
         private:
             Math::Vector2D m_position,

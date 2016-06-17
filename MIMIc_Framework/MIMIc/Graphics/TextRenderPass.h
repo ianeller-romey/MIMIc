@@ -70,6 +70,7 @@ namespace MIMIc { namespace Graphics {
 
             virtual bool InitializeOpenGL();
 
+            void UpdateTextCharacterGraphicsComponent(Components::TextCharacterGraphicsComponent* graphicsComponent) const;
             void GenerateTextTextureData(Components::TextCharacterGraphicsComponent* component, ShaderData_TextBlock* shaderData, float** vertexData) const;
     };
 

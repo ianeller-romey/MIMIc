@@ -1,10 +1,14 @@
 
 // Components
 #include "TextCharacterGraphicsComponent.h"
+#include "TransformationComponent.h"
 
 // DataModel
 #include "CharacterXYDictionary.h"
 #include "TextStyleDeserializer.h"
+
+// Graphics
+#include "VERTICES.h"
 
 
 namespace MIMIc { namespace Components {
@@ -18,6 +22,16 @@ namespace MIMIc { namespace Components {
         auto textCharacter = textType.GetTextStyleTypeCharacter(charDesc.m_xy.m_value, charDesc.m_xy.m_next.m_value);
 
         m_textStyleTypeCharacter = textCharacter;
+
+        Components::TransformationComponent* transformation = (Components::TransformationComponent*)m_transformationComponent;
+        auto position = transformation->GetPosition();
+        auto xMax = position.X() + m_textStyleTypeCharacter.GetCharacterWidth(),
+             yMax = position.Y() + m_textStyleTypeCharacter.GetCharacterHeight();
+        for(int i = 0, j = NUM_VERTICES; i < j; ++i)
+        {
+            m_vertices[i].X(Graphics::VERTICES[i].X() * xMax);
+            m_vertices[i].Y(Graphics::VERTICES[i].Y() * yMax);
+        }
     }
 
 
@@ -25,6 +39,7 @@ namespace MIMIc { namespace Components {
         m_transformationComponent(rhs.m_transformationComponent),
         m_textStyleTypeCharacter(rhs.m_textStyleTypeCharacter)
     {
+        memcpy(m_vertices, rhs.m_vertices, sizeof(m_vertices));
     }
 
 
@@ -37,9 +52,10 @@ namespace MIMIc { namespace Components {
     {
         m_transformationComponent = rhs.m_transformationComponent;
         m_textStyleTypeCharacter = rhs.m_textStyleTypeCharacter;
+        memcpy(m_vertices, rhs.m_vertices, sizeof(m_vertices));
 
         return *this;
-    }
+    }    
 
 
     Component* TextCharacterGraphicsComponent::GetTransformationComponent()
@@ -51,6 +67,12 @@ namespace MIMIc { namespace Components {
     DataModel::TextStyleTypeCharacter* TextCharacterGraphicsComponent::GetTextStyleTypeCharacter()
     {
         return &m_textStyleTypeCharacter;
+    }
+
+
+    Math::Vector2D* TextCharacterGraphicsComponent::GetVertices()
+    {
+        return m_vertices;
     }
 
 } }

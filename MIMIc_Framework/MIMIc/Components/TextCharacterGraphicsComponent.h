@@ -8,6 +8,12 @@
 // DataModel
 #include "TextStyleTypeCharacter.h"
 
+// Graphics
+#include "VERTICES.h"
+
+// Math
+#include "Vector2D.h"
+
 
 namespace MIMIc { namespace Components {
 
@@ -22,10 +28,12 @@ namespace MIMIc { namespace Components {
 
             Component* GetTransformationComponent();
             DataModel::TextStyleTypeCharacter* GetTextStyleTypeCharacter();
+            Math::Vector2D* GetVertices();
 
         private:
             Component* m_transformationComponent;
             DataModel::TextStyleTypeCharacter m_textStyleTypeCharacter;
+            Math::Vector2D m_vertices[NUM_VERTICES];
     };
 
 } }

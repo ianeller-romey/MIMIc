@@ -193,6 +193,9 @@
     <ClCompile Include="Utilities\Path.cpp">
       <Filter>MIMIc\Utilities\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Graphics\VERTICES.cpp">
+      <Filter>MIMIc\Graphics\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graphics\_Managers\GraphicsManager.h">
@@ -276,9 +279,9 @@
     <ClInclude Include="Utilities\Path.h">
       <Filter>MIMIc\Utilities\Headers</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="TODO.txt" />
+    <ClInclude Include="Graphics\VERTICES.h">
+      <Filter>MIMIc\Graphics\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Utilities\HasId.inl">

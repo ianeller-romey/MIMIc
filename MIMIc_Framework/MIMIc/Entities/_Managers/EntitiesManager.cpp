@@ -33,6 +33,11 @@ namespace MIMIc { namespace Entities { namespace Managers {
 
     void EntitiesManager::Update()
     {
+        for(auto begin = m_textEntities.begin(), end = m_textEntities.end(); begin != end; ++begin)
+        {
+            auto et = *begin;
+            et.m_transformationComponent.Update();
+        }
     }
 
 
@@ -51,7 +56,7 @@ namespace MIMIc { namespace Entities { namespace Managers {
     TextEntity* const EntitiesManager::CreateTextEntity(const char* const style, const char character, const int renderPassId)
     {
         m_textEntities.push_back(EntityAndTransformation<TextEntity>());
-        auto et = m_textEntities.back();
+        EntityAndTransformation<TextEntity>& et = m_textEntities.back();
 
         auto graphicsComponent = GRAPHICSMANAGERINSTANCE.CreateTextCharacterGraphicsComponent(&et.m_transformationComponent, style, character, renderPassId);
 

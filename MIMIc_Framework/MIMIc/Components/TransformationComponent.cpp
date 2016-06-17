@@ -98,6 +98,12 @@ namespace MIMIc { namespace Components {
     }
 
 
+    Math::Vector2D TransformationComponent::GetPosition() const
+    {
+        return m_position;
+    }
+
+
     void TransformationComponent::SetRotation(const float rotation)
     {
         m_rotation = rotation;
@@ -113,6 +119,12 @@ namespace MIMIc { namespace Components {
     float TransformationComponent::GetRotationChange() const
     {
         return m_rotation - m_lastRotation;
+    }
+
+
+    float TransformationComponent::GetRotation() const
+    {
+        return m_rotation;
     }
 
 
@@ -135,6 +147,12 @@ namespace MIMIc { namespace Components {
     }
 
 
+    Math::Vector2D TransformationComponent::GetScale() const
+    {
+        return m_scale;
+    }
+
+
     void TransformationComponent::SetVelocity(const float x, const float y)
     {
         m_velocity.X(x);
@@ -151,6 +169,12 @@ namespace MIMIc { namespace Components {
     Math::Vector2D TransformationComponent::GetVelocityChange() const
     {
         return m_velocity - m_lastVelocity;
+    }
+
+
+    Math::Vector2D TransformationComponent::GetVelocity() const
+    {
+        return m_velocity;
     }
 
 
