@@ -83,9 +83,9 @@ namespace MIMIc { namespace DataModel {
     }
 
 
-    const char TextStyleTypeCharacter::GetDataLength() const
+    const unsigned TextStyleTypeCharacter::GetDataLength() const
     {
-        return m_characterWidth * m_characterHeight;
+        return (int)m_characterWidth * (int)m_characterHeight;
     }
 
 

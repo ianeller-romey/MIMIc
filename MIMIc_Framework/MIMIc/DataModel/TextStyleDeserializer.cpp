@@ -97,7 +97,8 @@ namespace MIMIc { namespace DataModel {
                     throw; // TODO
             } while(continueOn2);
 
-            success = ReadArrayEnd();
+            // don't need to ReadArrayEnd(), since ReadNextArray() already did that for us
+            //success = ReadArrayEnd();
 
             success = ReadObjectEnd();
 

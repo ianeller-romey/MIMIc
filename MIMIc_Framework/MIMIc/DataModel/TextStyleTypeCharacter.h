@@ -30,7 +30,7 @@ namespace MIMIc { namespace DataModel {
             const char Y() const;
             const char GetCharacterWidth() const;
             const char GetCharacterHeight() const;
-            const char GetDataLength() const;
+            const unsigned GetDataLength() const;
             const CHARACTERDATA* const GetData() const;
             CHARACTERDATA* GetDataForEditing();
 

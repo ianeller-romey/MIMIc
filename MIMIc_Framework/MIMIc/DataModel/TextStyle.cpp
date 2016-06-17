@@ -47,9 +47,9 @@ namespace MIMIc { namespace DataModel {
         // TODO: Better searching
         for(auto begin = m_types.begin(), end = m_types.end(); begin != end; ++begin)
         {
-            auto character = *begin;
-            if(strcmp(character.GetType(), type) == 0)
-                return character;
+            auto tst = *begin;
+            if(strcmp(tst.GetType(), type) == 0)
+                return tst;
         }
 
         throw; // TODO

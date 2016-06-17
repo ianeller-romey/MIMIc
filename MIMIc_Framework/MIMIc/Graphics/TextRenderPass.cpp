@@ -140,12 +140,12 @@ namespace MIMIc { namespace Graphics {
         GLfloat vertexData[] =
         {
              // x   // y  // u  // v
-             0.0f,  0.0f, 0.0f, 0.0f,
-             19.0f,  0.0f, 1.0f, 0.0f,
-             19.0f,  19.0f, 1.0f, 1.0f,
-             19.0f,  19.0f, 1.0f, 1.0f,
-             0.0f,  19.0f, 0.0f, 1.0f,
-             0.0f,  0.0f, 0.0f, 0.0f,
+              0.0f,   0.0f, 0.0f, 0.0f,
+             36.0f,   0.0f, 1.0f, 0.0f,
+             36.0f,  64.0f, 1.0f, 1.0f,
+             36.0f,  64.0f, 1.0f, 1.0f,
+              0.0f,  64.0f, 0.0f, 1.0f,
+              0.0f,   0.0f, 0.0f, 0.0f,
         };
         glBindBuffer(GL_ARRAY_BUFFER, m_glVBO);
         glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_DYNAMIC_DRAW);
@@ -361,12 +361,12 @@ namespace MIMIc { namespace Graphics {
     void TextRenderPass::GenerateTextTextureData(Components::TextCharacterGraphicsComponent* component, ShaderData_TextBlock* shaderData, float** vertexData) const
     {
         auto textCharacter = component->GetTextStyleTypeCharacter();
-        auto textureWidth = textCharacter->GetCharacterWidth(),
-             textureHeight = textCharacter->GetCharacterHeight();
+        SHADERDATA_CHARACTERDATA textureWidth = textCharacter->GetCharacterWidth(),
+                                 textureHeight = textCharacter->GetCharacterHeight();
 
         // set texture width and texture height
-        memcpy(shaderData->m_textDimensions, &textureWidth, sizeof(CHARACTERDATA));
-        memcpy(shaderData->m_textDimensions + sizeof(CHARACTERDATA), &textureHeight, sizeof(CHARACTERDATA));
+        memcpy(shaderData->m_textDimensions, &textureWidth, sizeof(SHADERDATA_SIZEOF_CHARACTERDATA));
+        memcpy(shaderData->m_textDimensions + sizeof(SHADERDATA_SIZEOF_CHARACTERDATA), &textureHeight, sizeof(SHADERDATA_SIZEOF_CHARACTERDATA));
 
         // set texture
         memcpy(shaderData->m_textArray, textCharacter->GetData(), sizeof(CHARACTERDATA) * textCharacter->GetDataLength());

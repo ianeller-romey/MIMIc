@@ -23,9 +23,14 @@ void main()
 	uint yIndex = (u_textDimensions.y * uint(100 * v_texCoord.y)) / 100;
 	uint index = (yIndex * u_textDimensions.x) + xIndex;
 
-	// >> 2, since there are four ACTUAL textArray values for every one uvec4
-	// & 0x3, to figure out which value of the uvec4 we want
-	uint a = u_textArray[index >> 2][index & 0x3];
+	// the data is stored and passed as an array of characters; however, due to the way data is padded,
+	// we're accepting it as an array of uvec4s
+	// 1) >> 4, since there are sixteen ACTUAL textArray values (one char) for every one uvec4 (four unsigneds)
+	// 2a) (index / 4), since there are four unsigned values per uvec4, and 
+	// 2b) & 0x3, to figure out which of those four unsigned values we want
+	// 3a) index & 0x3, to figure out which byte of the chosen unsigned value we want, and
+	// 3b) >> (8 * n))) & 0xff, to actually get the specific byte we want
+	uint a = ((u_textArray[index >> 4][(index / 4) & 0x3]) >> (8 * (index & 0x3))) & 0xff;
 	
 	//uint length = textDimensions.x * textDimensions.y;
 	//o_fragmentColor = vec4((u_textDimensions.x - xIndex) / 19.0, 0, 0, 1);
