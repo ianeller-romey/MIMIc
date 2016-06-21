@@ -19,12 +19,12 @@ namespace MIMIc { namespace Messages {
         public:
             MessageListener();
             virtual ~MessageListener();
-            static std::list<MessageListener&>& GetListeners();
+            static std::list<MessageListener*>& GetListeners();
 
             virtual void Process(Types::CreateTextEntity* message);
 
         private:
-            static std::list<MessageListener&> s_listeners;
+            static std::list<MessageListener*> s_listeners;
     };
 
 } }

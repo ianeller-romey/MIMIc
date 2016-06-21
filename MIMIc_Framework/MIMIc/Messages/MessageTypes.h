@@ -15,7 +15,7 @@
 
 #define DECLARE_MESSAGE_TYPE(name) struct name : public Message {
 #define END_MESSAGE_TYPE(name) virtual ~name() override {}; \
-                               virtual void Dispatch(MessageListener& listener) override { listener.Process(this); }; }
+                               virtual void Dispatch(MessageListener* listener) override { listener->Process(this); }; };
 
 
 namespace MIMIc { namespace Messages { namespace Types {
@@ -23,7 +23,7 @@ namespace MIMIc { namespace Messages { namespace Types {
     struct Message
     {
         virtual ~Message() {};
-        virtual void Dispatch(MessageListener& listener) = 0;
+        virtual void Dispatch(MessageListener* listener) = 0;
     };
 
 

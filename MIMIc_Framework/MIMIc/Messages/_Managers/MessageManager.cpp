@@ -25,6 +25,7 @@ namespace MIMIc { namespace Messages { namespace Managers {
 
     bool MessageManager::Initialize()
     {
+        return true;
     }
 
 
@@ -50,6 +51,7 @@ namespace MIMIc { namespace Messages { namespace Managers {
             delete message;
             m_messages.pop_front();
         }
+        return true;
     }
 
 
