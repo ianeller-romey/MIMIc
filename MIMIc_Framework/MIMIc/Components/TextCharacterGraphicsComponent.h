@@ -22,7 +22,7 @@ namespace MIMIc { namespace Components {
         public:
             TextCharacterGraphicsComponent(Component* transformationComponent, const char* const style, const char character);
             TextCharacterGraphicsComponent(const TextCharacterGraphicsComponent& rhs);
-            virtual ~TextCharacterGraphicsComponent();
+            virtual ~TextCharacterGraphicsComponent() override;
 
             TextCharacterGraphicsComponent& operator=(const TextCharacterGraphicsComponent& rhs);
 

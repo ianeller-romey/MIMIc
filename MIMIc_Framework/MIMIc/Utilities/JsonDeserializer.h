@@ -19,7 +19,7 @@ namespace MIMIc { namespace Utilities {
         public:
             JsonDeserializer();
             JsonDeserializer(const JsonDeserializer& rhs);
-            virtual ~JsonDeserializer();     
+            virtual ~JsonDeserializer() override;     
 
         protected:
             static const char *s_openObject,

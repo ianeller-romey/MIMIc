@@ -27,17 +27,17 @@ namespace MIMIc { namespace Graphics {
             TextRenderPass();
             TextRenderPass(Framework::Window* window);
             TextRenderPass(const TextRenderPass& rhs);
-            virtual ~TextRenderPass();
+            virtual ~TextRenderPass() override;
 
             TextRenderPass& operator=(const TextRenderPass& rhs);
 
-            virtual void Update();
+            virtual void Update() override;
 
             void SetEmulatedConsoleWidth(const unsigned width);
             void SetEmulatedConsoleHeight(const unsigned height);
 
             void AddTextCharacterGraphicsComponent(Components::TextCharacterGraphicsComponent* const graphicsComponent);
-            virtual bool RemoveGraphicsComponent(Components::Component* const graphicsComponent);
+            virtual bool RemoveGraphicsComponent(Components::Component* const graphicsComponent) override;
 
         private:
             static const char* const s_vertexShaderFileName;
@@ -68,7 +68,7 @@ namespace MIMIc { namespace Graphics {
 
             std::list<Components::TextCharacterGraphicsComponent*> m_TextCharacterGraphicsComponents;
 
-            virtual bool InitializeOpenGL();
+            virtual bool InitializeOpenGL() override;
 
             void UpdateTextCharacterGraphicsComponent(Components::TextCharacterGraphicsComponent* graphicsComponent) const;
             void GenerateTextTextureData(Components::TextCharacterGraphicsComponent* component, ShaderData_TextBlock* shaderData, float** vertexData) const;

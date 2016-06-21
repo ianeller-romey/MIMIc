@@ -26,7 +26,7 @@ namespace MIMIc { namespace Graphics {
             
             static ShaderDeserializer* s_instance;
 
-            virtual Shader Deserialize(const std::string& file) const;
+            virtual Shader Deserialize(const std::string& file) const override;
     };
 
 } }

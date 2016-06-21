@@ -25,8 +25,8 @@ namespace MIMIc { namespace Graphics {
 
     const char* const TextRenderPass::s_vertexShaderFileName = "..\\..\\data\\shaders\\vertex\\textrenderpass.glvs";
     const char* const TextRenderPass::s_fragmentShaderFileName = "..\\..\\data\\shaders\\fragment\\textrenderpass.glfs";
-    const unsigned TextRenderPass::s_emulatedConsoleCharacterWidth = 18;
-    const unsigned TextRenderPass::s_emulatedConsoleCharacterHeight = 32;
+    const unsigned TextRenderPass::s_emulatedConsoleCharacterWidth = 8;
+    const unsigned TextRenderPass::s_emulatedConsoleCharacterHeight = 12;
     const unsigned TextRenderPass::s_defaultEmulatedConsoleWidth = 80;
     const unsigned TextRenderPass::s_defaultEmulatedConsoleHeight = 50;
 
@@ -148,11 +148,11 @@ namespace MIMIc { namespace Graphics {
                 0.0f, 1.0f, 0.0f, 1.0f,
                 0.0f, 0.0f, 0.0f, 0.0f
             };
-            float** v = (float**)&vertexData;
+            auto v = &vertexData;
 
             auto graphicsComponent = *begin;
             UpdateTextCharacterGraphicsComponent(graphicsComponent);
-            GenerateTextTextureData(graphicsComponent, &m_shaderData, (float**)&vertexData);
+            GenerateTextTextureData(graphicsComponent, &m_shaderData, (float**)&v);
 
             // Bind the VBO  
             glBindBuffer(GL_ARRAY_BUFFER, m_glVBO);

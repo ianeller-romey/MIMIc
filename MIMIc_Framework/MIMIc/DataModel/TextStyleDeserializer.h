@@ -19,7 +19,7 @@ namespace MIMIc { namespace DataModel {
         public:
             static TextStyleDeserializer& INSTANCE();
 
-            virtual ~TextStyleDeserializer();
+            virtual ~TextStyleDeserializer() override;
 
         private:
             TextStyleDeserializer();
@@ -28,7 +28,7 @@ namespace MIMIc { namespace DataModel {
             
             static TextStyleDeserializer* s_instance;
 
-            virtual TextStyle Deserialize(const std::string& key) const;
+            virtual TextStyle Deserialize(const std::string& key) const override;
     };
 
 } }

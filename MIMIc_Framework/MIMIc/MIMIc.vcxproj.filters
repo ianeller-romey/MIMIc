@@ -121,6 +121,28 @@
       <UniqueIdentifier>{1c173826-25d8-49eb-9ba2-f4dcf03178bc}</UniqueIdentifier>
       <Extensions>*.cpp</Extensions>
     </Filter>
+    <Filter Include="MIMIc\Messages">
+      <UniqueIdentifier>{28f29c2a-d305-4fd6-9988-50ccadd1e796}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Messages\Headers">
+      <UniqueIdentifier>{9a8575c4-429f-4b70-b786-691d440d4d7d}</UniqueIdentifier>
+      <Extensions>*.h,*.inl</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Messages\Source">
+      <UniqueIdentifier>{a9c19043-281c-4c79-a066-9fb0a0729209}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Messages\_Managers">
+      <UniqueIdentifier>{9a833696-7d81-4ec2-89e5-07f48b8bb4cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Messages\_Managers\Headers">
+      <UniqueIdentifier>{06ecef18-db1d-4f3b-a323-cf5b4868e0fd}</UniqueIdentifier>
+      <Extensions>*.h,*.inl</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Messages\_Managers\Source">
+      <UniqueIdentifier>{95ad86c0-012f-4672-9c4c-704afe6e18e2}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="driver.cpp" />
@@ -195,6 +217,12 @@
     </ClCompile>
     <ClCompile Include="Graphics\VERTICES.cpp">
       <Filter>MIMIc\Graphics\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Messages\MessageListener.cpp">
+      <Filter>MIMIc\Messages\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Messages\_Managers\MessageManager.cpp">
+      <Filter>MIMIc\Messages\_Managers\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -281,6 +309,21 @@
     </ClInclude>
     <ClInclude Include="Graphics\VERTICES.h">
       <Filter>MIMIc\Graphics\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\MessageListener.h">
+      <Filter>MIMIc\Messages\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\MessageTypes.h">
+      <Filter>MIMIc\Messages\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\_Managers\MessageManager.h">
+      <Filter>MIMIc\Messages\_Managers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\RequestResponseTypes.h">
+      <Filter>MIMIc\Messages\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\MessageTypeHelpers.h">
+      <Filter>MIMIc\Messages\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

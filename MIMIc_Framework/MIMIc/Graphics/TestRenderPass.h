@@ -13,11 +13,11 @@ namespace MIMIc { namespace Graphics {
             TestRenderPass();
             TestRenderPass(Framework::Window* window);
             TestRenderPass(const TestRenderPass& rhs);
-            virtual ~TestRenderPass();
+            virtual ~TestRenderPass() override;
 
             TestRenderPass& operator=(const TestRenderPass& rhs);
 
-            virtual void Update();
+            virtual void Update() override;
 
             void SetWindow(Framework::Window* window);
 
@@ -27,7 +27,7 @@ namespace MIMIc { namespace Graphics {
                      m_glIBO;
             int m_glVertexAttribute_Position;
 
-            virtual bool InitializeOpenGL();
+            virtual bool InitializeOpenGL() override;
     };
 
 } }

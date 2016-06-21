@@ -17,7 +17,7 @@ namespace MIMIc { namespace Components {
             TransformationComponent();
             TransformationComponent(const Math::Vector2D& position, const float rotation, const Math::Vector2D& scale, const Math::Vector2D& velocity);
             TransformationComponent(const TransformationComponent& rhs);
-            virtual ~TransformationComponent();
+            virtual ~TransformationComponent() override;
 
             TransformationComponent& operator=(const TransformationComponent& rhs);
 
