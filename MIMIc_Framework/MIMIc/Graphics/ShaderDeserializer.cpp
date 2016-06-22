@@ -7,7 +7,7 @@
 
 namespace MIMIc { namespace Graphics {
 
-    ShaderDeserializer* ShaderDeserializer::s_instance = NULL;
+    ShaderDeserializer* ShaderDeserializer::s_instance = 0;
 
 
     ShaderDeserializer& ShaderDeserializer::INSTANCE()

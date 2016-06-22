@@ -13,7 +13,7 @@
 
 namespace MIMIc { namespace Graphics { namespace Managers {
 
-    GraphicsManager* GraphicsManager::s_instance = NULL;
+    GraphicsManager* GraphicsManager::s_instance = 0;
 
 
     GraphicsManager& GraphicsManager::INSTANCE()
@@ -75,9 +75,13 @@ namespace MIMIc { namespace Graphics { namespace Managers {
     }
 
 
-    Components::Component* const GraphicsManager::CreateTextCharacterGraphicsComponent(Components::Component* transformationComponent, const char* const style, const char character, const int renderPassId)
+    Components::Component* const GraphicsManager::CreateTextCharacterGraphicsComponent(const long entityId, 
+                                                                                       Components::Component* transformationComponent, 
+                                                                                       const char* const style, 
+                                                                                       const char text, 
+                                                                                       const int renderPassId)
     {
-        auto graphicsComponent = new Components::TextCharacterGraphicsComponent(transformationComponent, style, character);
+        auto graphicsComponent = new Components::TextCharacterGraphicsComponent(entityId, transformationComponent, style, text);
 
         auto renderPass = (TextRenderPass*)GetRenderPass(renderPassId);
         renderPass->AddTextCharacterGraphicsComponent(graphicsComponent);

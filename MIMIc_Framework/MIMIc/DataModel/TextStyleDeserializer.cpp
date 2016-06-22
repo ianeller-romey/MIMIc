@@ -8,7 +8,7 @@
 
 namespace MIMIc { namespace DataModel {
 
-    TextStyleDeserializer* TextStyleDeserializer::s_instance = NULL;
+    TextStyleDeserializer* TextStyleDeserializer::s_instance = 0;
 
 
     TextStyleDeserializer& TextStyleDeserializer::INSTANCE()

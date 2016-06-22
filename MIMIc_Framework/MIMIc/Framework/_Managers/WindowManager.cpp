@@ -6,7 +6,7 @@
 
 namespace MIMIc { namespace Framework { namespace Managers {
 
-    WindowManager* WindowManager::s_instance = NULL;
+    WindowManager* WindowManager::s_instance = 0;
 
 
     WindowManager& WindowManager::INSTANCE()

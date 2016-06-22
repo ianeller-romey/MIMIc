@@ -5,17 +5,13 @@
 // Messages
 #include "MessageTypeHelpers.h"
 #include "MessageListener.h"
-
-// Math
-#include "Vector2D.h"
+#include "MessageMemoryManager.h"
 
 // std
 #include <string>
 
 
 #define DECLARE_MESSAGE_TYPE(name) struct name : public Message {
-#define END_MESSAGE_TYPE(name) virtual ~name() override {}; \
-                               virtual void Dispatch(MessageListener* listener) override { listener->Process(this); }; };
 
 
 namespace MIMIc { namespace Messages { namespace Types {
@@ -24,19 +20,43 @@ namespace MIMIc { namespace Messages { namespace Types {
     {
         virtual ~Message() {};
         virtual void Dispatch(MessageListener* listener) = 0;
+
+        void* operator new(size_t size)
+        {
+            return MESSAGEMEMORYMANAGERINSTANCE.Allocate(size);
+        }
+
+        void operator delete (void * mem)
+        {
+            // We should never individually delete these;
+            // the MessageManager bulk frees all messages when it's done processing
+            throw;
+        }
     };
 
 
     DECLARE_MESSAGE_TYPE(CreateTextEntity)
-        std::string m_text;
-        TransformationDataForMessage m_transformation;
+        const std::string m_style,
+                          m_text;
+        const TransformationDataForMessage m_transformation;
+        const int m_renderPassId;
 
-        CreateTextEntity(const char* const text, TransformationDataForMessage transformation) :
+        CreateTextEntity(const char* const style, const char* const text, const TransformationDataForMessage transformation, const int renderPassId) :
+            m_style(style),
             m_text(text),
-            m_transformation(transformation)
+            m_transformation(transformation),
+            m_renderPassId(renderPassId)
         {
         };
-    END_MESSAGE_TYPE(CreateTextEntity)
+
+        CreateTextEntity(const char* const style, const char* const text, const int renderPassId) :
+            m_style(style),
+            m_text(text),
+            m_transformation(),
+            m_renderPassId(renderPassId)
+        {
+        };
+    END_MESSAGELISTENER_DISPATCH_DECLARATION(CreateTextEntity)
 
 } } }
 

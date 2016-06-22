@@ -143,6 +143,28 @@
       <UniqueIdentifier>{95ad86c0-012f-4672-9c4c-704afe6e18e2}</UniqueIdentifier>
       <Extensions>*.cpp</Extensions>
     </Filter>
+    <Filter Include="MIMIc\Behaviors">
+      <UniqueIdentifier>{ea22cefa-3a56-4b5a-89cf-229aba704dc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Behaviors\Headers">
+      <UniqueIdentifier>{557e0e2c-16ba-4ee3-b0b5-92ccedeae214}</UniqueIdentifier>
+      <Extensions>*.h;*.inl</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Behaviors\Source">
+      <UniqueIdentifier>{5e80edd5-c1b0-487b-bb2f-d813c1d9ff26}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Behaviors\_Managers">
+      <UniqueIdentifier>{f4c46fd8-ca3c-4551-a6f4-cc81288a452e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MIMIc\Behaviors\_Managers\Headers">
+      <UniqueIdentifier>{0858f937-8c61-4750-b81e-2c3454df6020}</UniqueIdentifier>
+      <Extensions>*.h;*.inl</Extensions>
+    </Filter>
+    <Filter Include="MIMIc\Behaviors\_Managers\Source">
+      <UniqueIdentifier>{683d237f-0cfc-4010-b70f-cf2862f41282}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="driver.cpp" />
@@ -188,9 +210,6 @@
     <ClCompile Include="Components\TransformationComponent.cpp">
       <Filter>MIMIc\Components\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Entities\TextEntity.cpp">
-      <Filter>MIMIc\Entities\Source</Filter>
-    </ClCompile>
     <ClCompile Include="DataModel\TextStyle.cpp">
       <Filter>MIMIc\DataModel\Source</Filter>
     </ClCompile>
@@ -223,6 +242,18 @@
     </ClCompile>
     <ClCompile Include="Messages\_Managers\MessageManager.cpp">
       <Filter>MIMIc\Messages\_Managers\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Messages\_Managers\MessageMemoryManager.cpp">
+      <Filter>MIMIc\Messages\_Managers\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Behaviors\_Managers\BehaviorsManager.cpp">
+      <Filter>MIMIc\Behaviors\_Managers\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\TextStringOverTimeBehaviorComponent.cpp">
+      <Filter>MIMIc\Components\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\Entity.cpp">
+      <Filter>MIMIc\Entities\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -274,9 +305,6 @@
     <ClInclude Include="Components\TransformationComponent.h">
       <Filter>MIMIc\Components\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Entities\TextEntity.h">
-      <Filter>MIMIc\Entities\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="DataModel\TextStyleType.h">
       <Filter>MIMIc\DataModel\Headers</Filter>
     </ClInclude>
@@ -325,6 +353,21 @@
     <ClInclude Include="Messages\MessageTypeHelpers.h">
       <Filter>MIMIc\Messages\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Messages\NoticeTypes.h">
+      <Filter>MIMIc\Messages\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\_Managers\MessageMemoryManager.h">
+      <Filter>MIMIc\Messages\_Managers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Behaviors\_Managers\BehaviorsManager.h">
+      <Filter>MIMIc\Behaviors\_Managers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\TextStringOverTimeBehaviorComponent.h">
+      <Filter>MIMIc\Components\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\Entity.h">
+      <Filter>MIMIc\Entities\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Utilities\HasId.inl">
@@ -350,6 +393,9 @@
     </None>
     <None Include="Utilities\NTuple.inl">
       <Filter>MIMIc\Utilities\Headers</Filter>
+    </None>
+    <None Include="Behaviors\_Managers\BehaviorsManager.inl">
+      <Filter>MIMIc\Behaviors\_Managers\Headers</Filter>
     </None>
   </ItemGroup>
 </Project>

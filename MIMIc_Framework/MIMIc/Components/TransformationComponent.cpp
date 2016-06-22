@@ -5,7 +5,8 @@
 
 namespace MIMIc { namespace Components {
 
-    TransformationComponent::TransformationComponent() :
+    TransformationComponent::TransformationComponent(const long entityId) :
+        Component(entityId),
         m_position(0.0, 0.0, Math::Vector2D::NormalizationState::Ignored),
         m_lastPosition(0.0, 0.0, Math::Vector2D::NormalizationState::Ignored),
         m_rotation(0.0),
@@ -18,7 +19,8 @@ namespace MIMIc { namespace Components {
     }
 
 
-    TransformationComponent::TransformationComponent(const Math::Vector2D& position, const float rotation, const Math::Vector2D& scale, const Math::Vector2D& velocity) :
+    TransformationComponent::TransformationComponent(const long entityId, const Math::Vector2D& position, const float rotation, const Math::Vector2D& scale, const Math::Vector2D& velocity) :
+        Component(entityId),
         m_position(position),
         m_lastPosition(position),
         m_rotation(rotation),
@@ -32,6 +34,7 @@ namespace MIMIc { namespace Components {
 
 
     TransformationComponent::TransformationComponent(const TransformationComponent& rhs) :
+        Component(rhs),
         m_position(rhs.m_position),
         m_lastPosition(rhs.m_lastPosition),
         m_rotation(rhs.m_rotation),
@@ -46,21 +49,6 @@ namespace MIMIc { namespace Components {
 
     TransformationComponent::~TransformationComponent()
     {
-    }
-
-
-    TransformationComponent& TransformationComponent::operator=(const TransformationComponent& rhs)
-    {
-        m_position = rhs.m_position;
-        m_lastPosition = rhs.m_lastPosition;
-        m_rotation = rhs.m_rotation;
-        m_lastRotation = rhs.m_lastRotation;
-        m_scale = rhs.m_scale;
-        m_lastScale = rhs.m_lastScale;
-        m_velocity = rhs.m_velocity;
-        m_lastVelocity = rhs.m_lastVelocity;
-
-        return *this;
     }
 
 

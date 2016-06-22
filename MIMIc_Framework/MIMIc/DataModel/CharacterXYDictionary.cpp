@@ -5,7 +5,7 @@
 
 namespace MIMIc { namespace DataModel {
 
-    CharacterXYDictionary* CharacterXYDictionary::s_instance = NULL;
+    CharacterXYDictionary* CharacterXYDictionary::s_instance = 0;
 
 
     CharacterXYDictionary& CharacterXYDictionary::INSTANCE()

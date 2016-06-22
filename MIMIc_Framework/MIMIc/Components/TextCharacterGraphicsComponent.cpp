@@ -13,7 +13,8 @@
 
 namespace MIMIc { namespace Components {
 
-    TextCharacterGraphicsComponent::TextCharacterGraphicsComponent(Component* transformationComponent, const char* const style, const char character) :
+    TextCharacterGraphicsComponent::TextCharacterGraphicsComponent(const long entityId, Component* transformationComponent, const char* const style, const char character) :
+        Component(entityId),
         m_transformationComponent(transformationComponent)
     {
         auto charDesc = CHARACTERXYDICTIONARYINSTANCE.GetXYFromCharacter(character);
@@ -25,17 +26,16 @@ namespace MIMIc { namespace Components {
 
         Components::TransformationComponent* transformation = (Components::TransformationComponent*)m_transformationComponent;
         auto position = transformation->GetPosition();
-        auto xMax = position.X() + m_textStyleTypeCharacter.GetCharacterWidth(),
-             yMax = position.Y() + m_textStyleTypeCharacter.GetCharacterHeight();
         for(int i = 0, j = NUM_VERTICES; i < j; ++i)
         {
-            m_vertices[i].X(Graphics::VERTICES[i].X() * xMax);
-            m_vertices[i].Y(Graphics::VERTICES[i].Y() * yMax);
+            m_vertices[i].X((Graphics::VERTICES[i].X() * m_textStyleTypeCharacter.GetCharacterWidth()) + position.X());
+            m_vertices[i].Y((Graphics::VERTICES[i].Y() * m_textStyleTypeCharacter.GetCharacterHeight()) + position.Y());
         }
     }
 
 
     TextCharacterGraphicsComponent::TextCharacterGraphicsComponent(const TextCharacterGraphicsComponent& rhs) :
+        Component(rhs),
         m_transformationComponent(rhs.m_transformationComponent),
         m_textStyleTypeCharacter(rhs.m_textStyleTypeCharacter)
     {
@@ -48,14 +48,9 @@ namespace MIMIc { namespace Components {
     }
 
 
-    TextCharacterGraphicsComponent& TextCharacterGraphicsComponent::operator=(const TextCharacterGraphicsComponent& rhs)
+    void TextCharacterGraphicsComponent::Update()
     {
-        m_transformationComponent = rhs.m_transformationComponent;
-        m_textStyleTypeCharacter = rhs.m_textStyleTypeCharacter;
-        memcpy(m_vertices, rhs.m_vertices, sizeof(m_vertices));
-
-        return *this;
-    }    
+    }
 
 
     Component* TextCharacterGraphicsComponent::GetTransformationComponent()

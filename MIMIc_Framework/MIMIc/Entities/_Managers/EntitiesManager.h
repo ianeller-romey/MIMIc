@@ -5,8 +5,12 @@
 // Components
 #include "TransformationComponent.h"
 
+// Messages
+#include "MessageTypes.h";
+#include "MessageListener.h"
+
 // Entities
-#include "TextEntity.h"
+#include "Entity.h"
 
 // Math
 #include "Vector2D.h"
@@ -20,7 +24,7 @@
 
 namespace MIMIc { namespace Entities { namespace Managers {
 
-    class EntitiesManager
+    class EntitiesManager : public Messages::MessageListener
     {
         public:
             static EntitiesManager& INSTANCE();
@@ -28,30 +32,31 @@ namespace MIMIc { namespace Entities { namespace Managers {
             bool Initialize();
             void Update();
             bool Shutdown();
-
-            TextEntity* const CreateTextEntity(const char* const style, const char character, const int renderPassId);
-            TextEntity* const CreateTextEntity(const Math::Vector2D& position, 
-                                               const float rotation, 
-                                               const Math::Vector2D& scale,
-                                               const Math::Vector2D& velocity, 
-                                               const char* const style,
-                                               const char character,
-                                               const int renderPassId);
+            
+            virtual void Process(Messages::Types::CreateTextEntity* message) override;
+            Entity* const CreateTextEntity(const Math::Vector2D& position, 
+                                           const float rotation, 
+                                           const Math::Vector2D& scale,
+                                           const Math::Vector2D& velocity, 
+                                           const char* const style,
+                                           const char text,
+                                           const int renderPassId);
             
         private:
             EntitiesManager();
             EntitiesManager(const EntitiesManager& rhs); // undefined; singleton
             EntitiesManager& operator=(const EntitiesManager& rhs); // undefined; singleton
 
+            static EntitiesManager* s_instance;
+
             template <typename T>
             struct EntityAndTransformation
             {
                 char m_entity[sizeof(T)];
-                Components::TransformationComponent m_transformationComponent;
+                char m_transformationComponent[sizeof(Components::TransformationComponent)];
             };
 
-            static EntitiesManager* s_instance;
-            std::list<EntityAndTransformation<TextEntity>> m_textEntities;
+            std::list<EntityAndTransformation<Entity>> m_textEntities;
     };
     
 } } }

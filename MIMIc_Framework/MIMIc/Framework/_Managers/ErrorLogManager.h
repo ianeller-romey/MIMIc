@@ -17,10 +17,6 @@ namespace MIMIc { namespace Framework { namespace Managers {
         public:
             static ErrorLogManager& INSTANCE();
 
-            bool Initialize();
-            void Update();
-            bool Shutdown();
-
             void CreateErrorLog(const char* const error);
             const std::vector<const std::string> GetErrorLogs() const;
 

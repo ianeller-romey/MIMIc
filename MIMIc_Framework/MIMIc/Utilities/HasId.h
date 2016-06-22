@@ -21,7 +21,7 @@ namespace MIMIc { namespace Utilities {
 
         private:
             static long s_idGenerator;
-            long m_id;
+            const long m_id;
     };
 
 } }

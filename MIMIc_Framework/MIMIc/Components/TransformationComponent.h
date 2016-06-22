@@ -14,14 +14,12 @@ namespace MIMIc { namespace Components {
     class TransformationComponent : public Component
     {
         public:
-            TransformationComponent();
-            TransformationComponent(const Math::Vector2D& position, const float rotation, const Math::Vector2D& scale, const Math::Vector2D& velocity);
+            TransformationComponent(const long entityId);
+            TransformationComponent(const long entityId, const Math::Vector2D& position, const float rotation, const Math::Vector2D& scale, const Math::Vector2D& velocity);
             TransformationComponent(const TransformationComponent& rhs);
             virtual ~TransformationComponent() override;
 
-            TransformationComponent& operator=(const TransformationComponent& rhs);
-
-            virtual void Update();
+            virtual void Update() override;
             
             void Translate(const Math::Vector2D& translator);
 
@@ -46,6 +44,8 @@ namespace MIMIc { namespace Components {
             Math::Vector2D GetVelocity() const;
 
         private:
+            TransformationComponent& operator=(const TransformationComponent& rhs);
+
             Math::Vector2D m_position,
                            m_lastPosition;
             float m_rotation,

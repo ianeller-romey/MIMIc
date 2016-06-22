@@ -51,7 +51,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\external\SDL2-2.0.4\include;$(SolutionDir)..\external\glew-1.13.0\include\GL;$(SolutionDir)MIMIc\DataModel;$(SolutionDir)MIMIc\Framework;$(SolutionDir)MIMIc\Framework\_Managers;$(SolutionDir)MIMIc\Components;$(SolutionDir)MIMIc\Entities;$(SolutionDir)MIMIc\Entities\_Managers;$(SolutionDir)MIMIc\Graphics;$(SolutionDir)MIMIc\Graphics\_Managers;$(SolutionDir)MIMIc\Math;$(SolutionDir)MIMIc\Messages;$(SolutionDir)MIMIc\Messages\_Managers;$(SolutionDir)MIMIc\Utilities</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\external\SDL2-2.0.4\include;$(SolutionDir)..\external\glew-1.13.0\include\GL;$(SolutionDir)MIMIc\DataModel;$(SolutionDir)MIMIc\Framework;$(SolutionDir)MIMIc\Framework\_Managers;$(SolutionDir)MIMIc\Components;$(SolutionDir)MIMIc\Entities;$(SolutionDir)MIMIc\Entities\_Managers;$(SolutionDir)MIMIc\Behaviors;$(SolutionDir)MIMIc\Behaviors\_Managers;$(SolutionDir)MIMIc\Graphics;$(SolutionDir)MIMIc\Graphics\_Managers;$(SolutionDir)MIMIc\Math;$(SolutionDir)MIMIc\Messages;$(SolutionDir)MIMIc\Messages\_Managers;$(SolutionDir)MIMIc\Utilities</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -73,7 +73,7 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\external\SDL2-2.0.4\include;$(SolutionDir)..\external\glew-1.13.0\include\GL;$(SolutionDir)MIMIc\DataModel;$(SolutionDir)MIMIc\Framework;$(SolutionDir)MIMIc\Framework\_Managers;$(SolutionDir)MIMIc\Components;$(SolutionDir)MIMIc\Entities;$(SolutionDir)MIMIc\Entities\_Managers;$(SolutionDir)MIMIc\Graphics;$(SolutionDir)MIMIc\Graphics\_Managers;$(SolutionDir)MIMIc\Math;$(SolutionDir)MIMIc\Messages;$(SolutionDir)MIMIc\Messages\_Managers;$(SolutionDir)MIMIc\Utilities</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\external\SDL2-2.0.4\include;$(SolutionDir)..\external\glew-1.13.0\include\GL;$(SolutionDir)MIMIc\DataModel;$(SolutionDir)MIMIc\Framework;$(SolutionDir)MIMIc\Framework\_Managers;$(SolutionDir)MIMIc\Components;$(SolutionDir)MIMIc\Entities;$(SolutionDir)MIMIc\Entities\_Managers;$(SolutionDir)MIMIc\Behaviors;$(SolutionDir)MIMIc\Behaviors\_Managers;$(SolutionDir)MIMIc\Graphics;$(SolutionDir)MIMIc\Graphics\_Managers;$(SolutionDir)MIMIc\Math;$(SolutionDir)MIMIc\Messages;$(SolutionDir)MIMIc\Messages\_Managers;$(SolutionDir)MIMIc\Utilities</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -91,8 +91,10 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Behaviors\_Managers\BehaviorsManager.cpp" />
     <ClCompile Include="Components\Component.cpp" />
     <ClCompile Include="Components\TextCharacterGraphicsComponent.cpp" />
+    <ClCompile Include="Components\TextStringOverTimeBehaviorComponent.cpp" />
     <ClCompile Include="Components\TransformationComponent.cpp" />
     <ClCompile Include="DataModel\CharacterXYDescriptor.cpp" />
     <ClCompile Include="DataModel\CharacterXYDictionary.cpp" />
@@ -101,7 +103,7 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
     <ClCompile Include="DataModel\TextStyleType.cpp" />
     <ClCompile Include="DataModel\TextStyleTypeCharacter.cpp" />
     <ClCompile Include="driver.cpp" />
-    <ClCompile Include="Entities\TextEntity.cpp" />
+    <ClCompile Include="Entities\Entity.cpp" />
     <ClCompile Include="Entities\_Managers\EntitiesManager.cpp" />
     <ClCompile Include="Framework\Window.cpp" />
     <ClCompile Include="Framework\_Managers\ErrorLogManager.cpp" />
@@ -117,11 +119,14 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
     <ClCompile Include="Math\Vector2D.cpp" />
     <ClCompile Include="Messages\MessageListener.cpp" />
     <ClCompile Include="Messages\_Managers\MessageManager.cpp" />
+    <ClCompile Include="Messages\_Managers\MessageMemoryManager.cpp" />
     <ClCompile Include="Utilities\Path.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Behaviors\_Managers\BehaviorsManager.h" />
     <ClInclude Include="Components\Component.h" />
     <ClInclude Include="Components\TextCharacterGraphicsComponent.h" />
+    <ClInclude Include="Components\TextStringOverTimeBehaviorComponent.h" />
     <ClInclude Include="Components\TransformationComponent.h" />
     <ClInclude Include="DataModel\CharacterXYDescriptor.h" />
     <ClInclude Include="DataModel\CharacterXYDictionary.h" />
@@ -129,7 +134,7 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
     <ClInclude Include="DataModel\TextStyleDeserializer.h" />
     <ClInclude Include="DataModel\TextStyleType.h" />
     <ClInclude Include="DataModel\TextStyleTypeCharacter.h" />
-    <ClInclude Include="Entities\TextEntity.h" />
+    <ClInclude Include="Entities\Entity.h" />
     <ClInclude Include="Entities\_Managers\EntitiesManager.h" />
     <ClInclude Include="Framework\Window.h" />
     <ClInclude Include="Framework\_Managers\ErrorLogManager.h" />
@@ -146,8 +151,10 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
     <ClInclude Include="Messages\MessageListener.h" />
     <ClInclude Include="Messages\MessageTypeHelpers.h" />
     <ClInclude Include="Messages\MessageTypes.h" />
+    <ClInclude Include="Messages\NoticeTypes.h" />
     <ClInclude Include="Messages\RequestResponseTypes.h" />
     <ClInclude Include="Messages\_Managers\MessageManager.h" />
+    <ClInclude Include="Messages\_Managers\MessageMemoryManager.h" />
     <ClInclude Include="Utilities\Deserializer.h" />
     <ClInclude Include="Utilities\HasId.h" />
     <ClInclude Include="Utilities\JsonDeserializer.h" />
@@ -157,6 +164,7 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
   <ItemGroup>
     <None Include="..\..\data\shaders\fragment\textrenderpass.glfs" />
     <None Include="..\..\data\shaders\vertex\textrenderpass.glvs" />
+    <None Include="Behaviors\_Managers\BehaviorsManager.inl" />
     <None Include="Entities\_Managers\EntitiesManager.inl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

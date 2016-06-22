@@ -5,6 +5,9 @@
 // Components
 #include "Component.h"
 
+// Messages
+#include "MessageListener.h"
+
 // Graphics
 #include "RenderPass.h"
 
@@ -18,7 +21,7 @@
 
 namespace MIMIc { namespace Graphics { namespace Managers {
 
-    class GraphicsManager
+    class GraphicsManager : public Messages::MessageListener
     {
         public:
             static GraphicsManager& INSTANCE();
@@ -31,7 +34,11 @@ namespace MIMIc { namespace Graphics { namespace Managers {
             RenderPass* const CreateRenderPass(Framework::Window* window);
             RenderPass* const GetRenderPass(const int renderPassId) const;
 
-            Components::Component* const CreateTextCharacterGraphicsComponent(Components::Component* transformationComponent, const char* const style, const char character, const int renderPassId);
+            Components::Component* const CreateTextCharacterGraphicsComponent(const long entityId,
+                                                                              Components::Component* transformationComponent, 
+                                                                              const char* const style, 
+                                                                              const char text, 
+                                                                              const int renderPassId);
 
             void RemoveGraphicsComponent(Components::Component* const graphicsComponent);
             

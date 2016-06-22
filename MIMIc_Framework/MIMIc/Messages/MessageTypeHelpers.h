@@ -6,6 +6,10 @@
 #include "Vector2D.h"
 
 
+#define END_MESSAGELISTENER_DISPATCH_DECLARATION(name) virtual ~name() override {}; \
+                                                       virtual void Dispatch(MessageListener* listener) override { listener->Process(this); }; };
+
+
 namespace MIMIc { namespace Messages { namespace Types {
 
     struct TransformationDataForMessage

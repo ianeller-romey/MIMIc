@@ -4,7 +4,7 @@
 
 namespace MIMIc { namespace Framework { namespace Managers {
 
-    ErrorLogManager* ErrorLogManager::s_instance = NULL;
+    ErrorLogManager* ErrorLogManager::s_instance = 0;
 
 
     ErrorLogManager& ErrorLogManager::INSTANCE()
@@ -18,23 +18,6 @@ namespace MIMIc { namespace Framework { namespace Managers {
 
     ErrorLogManager::ErrorLogManager()
     {
-    }
-
-
-    bool ErrorLogManager::Initialize()
-    {
-        return true;
-    }
-
-
-    void ErrorLogManager::Update()
-    {
-    }
-
-
-    bool ErrorLogManager::Shutdown()
-    {
-        return true;
     }
 
 

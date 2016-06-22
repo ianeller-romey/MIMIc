@@ -4,9 +4,11 @@
 
 // Messages
 #include "MessageTypes.h"
+#include "NoticeTypes.h"
+#include "RequestResponseTypes.h"
 
 // std
-#include <list>
+#include <queue>
 
 
 #define MAILMAN MIMIc::Messages::Managers::MessageManager::INSTANCE()
@@ -27,8 +29,8 @@ namespace MIMIc { namespace Messages { namespace Managers {
             bool Shutdown();
 
             void PostMessage(Message* message);
-            void PostHighPriorityMessage(Message* message);
-            void ReturnServiceRequested(Message* message);
+            void PostNotice(Notice* notice);
+            void ReturnServiceRequested(Request* request);
 
         private:
             MessageManager();
@@ -37,9 +39,12 @@ namespace MIMIc { namespace Messages { namespace Managers {
 
             static MessageManager* s_instance;
 
-            std::list<Message*> m_messages;
+            std::queue<Message*> m_messages;
 
             void MessageDispatch(Message* message) const;
+            void NoticeDispatch(Notice* notice) const;
+            void RequestDispatch(Request* request) const;
+            void ResponseDispatch(Response* response) const;
     };
 
 } } }

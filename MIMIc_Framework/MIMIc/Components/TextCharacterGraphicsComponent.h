@@ -1,6 +1,6 @@
 
-#ifndef COMPONENTS_TextCharacterGraphicsComponent_H
-#define COMPONENTS_TextCharacterGraphicsComponent_H
+#ifndef COMPONENTS_TEXTCHARACTERGRAPHICSCOMPONENT_H
+#define COMPONENTS_TEXTCHARACTERGRAPHICSCOMPONENT_H
 
 // Components
 #include "Component.h"
@@ -20,17 +20,20 @@ namespace MIMIc { namespace Components {
     class TextCharacterGraphicsComponent : public Component
     {
         public:
-            TextCharacterGraphicsComponent(Component* transformationComponent, const char* const style, const char character);
+            TextCharacterGraphicsComponent(const long entityId, Component* transformationComponent, const char* const style, const char character);
             TextCharacterGraphicsComponent(const TextCharacterGraphicsComponent& rhs);
             virtual ~TextCharacterGraphicsComponent() override;
 
-            TextCharacterGraphicsComponent& operator=(const TextCharacterGraphicsComponent& rhs);
+
+            virtual void Update() override;
 
             Component* GetTransformationComponent();
             DataModel::TextStyleTypeCharacter* GetTextStyleTypeCharacter();
             Math::Vector2D* GetVertices();
 
         private:
+            TextCharacterGraphicsComponent& operator=(const TextCharacterGraphicsComponent& rhs);
+
             Component* m_transformationComponent;
             DataModel::TextStyleTypeCharacter m_textStyleTypeCharacter;
             Math::Vector2D m_vertices[NUM_VERTICES];

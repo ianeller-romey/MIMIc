@@ -8,7 +8,7 @@
 
 namespace MIMIc { namespace Entities { namespace Managers {
 
-    EntitiesManager* EntitiesManager::s_instance = NULL;
+    EntitiesManager* EntitiesManager::s_instance = 0;
 
 
     EntitiesManager& EntitiesManager::INSTANCE()
@@ -36,7 +36,7 @@ namespace MIMIc { namespace Entities { namespace Managers {
         for(auto begin = m_textEntities.begin(), end = m_textEntities.end(); begin != end; ++begin)
         {
             auto et = *begin;
-            et.m_transformationComponent.Update();
+            ((Components::TransformationComponent*)et.m_transformationComponent)->Update();
         }
     }
 
@@ -46,44 +46,43 @@ namespace MIMIc { namespace Entities { namespace Managers {
         for(auto begin = m_textEntities.begin(), end = m_textEntities.end(); begin != end; ++begin)
         {
             auto et = *begin;
-            delete (TextEntity*)(et.m_entity);
+            delete (Entity*)(et.m_entity);
         }
 
         return true;
     }
 
 
-    TextEntity* const EntitiesManager::CreateTextEntity(const char* const style, const char character, const int renderPassId)
+    void EntitiesManager::Process(Messages::Types::CreateTextEntity* message)
     {
-        m_textEntities.push_back(EntityAndTransformation<TextEntity>());
-        EntityAndTransformation<TextEntity>& et = m_textEntities.back();
-
-        auto graphicsComponent = GRAPHICSMANAGERINSTANCE.CreateTextCharacterGraphicsComponent(&et.m_transformationComponent, style, character, renderPassId);
-
-        new (et.m_entity) TextEntity(&et.m_transformationComponent, graphicsComponent);
-
-        return (TextEntity*)(&et.m_entity);
+        CreateTextEntity(message->m_transformation.m_position, 
+                         message->m_transformation.m_rotation, 
+                         message->m_transformation.m_scale,
+                         message->m_transformation.m_velocity,
+                         message->m_style.c_str(),
+                         message->m_text[0],
+                         message->m_renderPassId);
     }
 
 
-    TextEntity* const EntitiesManager::CreateTextEntity(const Math::Vector2D& position, 
+    Entity* const EntitiesManager::CreateTextEntity(const Math::Vector2D& position, 
                                                         const float rotation, 
                                                         const Math::Vector2D& scale,
                                                         const Math::Vector2D& velocity, 
                                                         const char* const style,
-                                                        const char character,
+                                                        const char text,
                                                         const int renderPassId)
     {
-        m_textEntities.push_back(EntityAndTransformation<TextEntity>());
+        m_textEntities.push_back(EntityAndTransformation<Entity>());
         auto et = m_textEntities.back();
 
-        et.m_transformationComponent = Components::TransformationComponent(position, rotation, scale, velocity);
+        auto entity = new (et.m_entity) Entity();
+        auto transformation = new (et.m_transformationComponent) Components::TransformationComponent(entity->GetId(), position, rotation, scale, velocity);
 
-        auto graphicsComponent = GRAPHICSMANAGERINSTANCE.CreateTextCharacterGraphicsComponent(&et.m_transformationComponent, style, character, renderPassId);
+        auto graphicsComponent = GRAPHICSMANAGERINSTANCE.CreateTextCharacterGraphicsComponent(entity->GetId(), transformation, style, text, renderPassId);
+        entity->m_graphicsComponent = graphicsComponent;
 
-        new (et.m_entity) TextEntity(&et.m_transformationComponent, graphicsComponent);
-
-        return (TextEntity*)(&et.m_entity);
+        return (Entity*)(&et.m_entity);
     }
 
 } } }
