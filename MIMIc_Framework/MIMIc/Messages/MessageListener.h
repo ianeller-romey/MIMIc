@@ -11,6 +11,7 @@ namespace MIMIc { namespace Messages {
     namespace Types {
 
         struct CreateTextEntity;
+        struct SetTextString;
 
     }
 
@@ -23,6 +24,7 @@ namespace MIMIc { namespace Messages {
             static std::list<MessageListener*>& GetListeners();
 
             virtual void Process(Types::CreateTextEntity* message);
+            virtual void Process(Types::SetTextString* message);
 
         private:
             static std::list<MessageListener*> s_listeners;

@@ -32,4 +32,9 @@ namespace MIMIc { namespace Messages {
     {
     }
 
+
+    void MessageListener::Process(Types::SetTextString* message)
+    {
+    }
+
 } }

@@ -225,9 +225,6 @@
     <ClCompile Include="DataModel\CharacterXYDictionary.cpp">
       <Filter>MIMIc\DataModel\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Components\TextCharacterGraphicsComponent.cpp">
-      <Filter>MIMIc\Components\Source</Filter>
-    </ClCompile>
     <ClCompile Include="DataModel\CharacterXYDescriptor.cpp">
       <Filter>MIMIc\DataModel\Source</Filter>
     </ClCompile>
@@ -254,6 +251,15 @@
     </ClCompile>
     <ClCompile Include="Entities\Entity.cpp">
       <Filter>MIMIc\Entities\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\TextStringGraphicsComponent.cpp">
+      <Filter>MIMIc\Components\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DataModel\WordDescriptor.cpp">
+      <Filter>MIMIc\DataModel\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\VertexArray.cpp">
+      <Filter>MIMIc\Graphics\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -326,9 +332,6 @@
     <ClInclude Include="Utilities\NTuple.h">
       <Filter>MIMIc\Utilities\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Components\TextCharacterGraphicsComponent.h">
-      <Filter>MIMIc\Components\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="DataModel\CharacterXYDescriptor.h">
       <Filter>MIMIc\DataModel\Headers</Filter>
     </ClInclude>
@@ -368,6 +371,18 @@
     <ClInclude Include="Entities\Entity.h">
       <Filter>MIMIc\Entities\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Components\TextStringGraphicsComponent.h">
+      <Filter>MIMIc\Components\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\HeteroPair.h">
+      <Filter>MIMIc\Utilities\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DataModel\WordDescriptor.h">
+      <Filter>MIMIc\DataModel\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\VertexArray.h">
+      <Filter>MIMIc\Graphics\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Utilities\HasId.inl">
@@ -396,6 +411,9 @@
     </None>
     <None Include="Behaviors\_Managers\BehaviorsManager.inl">
       <Filter>MIMIc\Behaviors\_Managers\Headers</Filter>
+    </None>
+    <None Include="Utilities\HeteroPair.inl">
+      <Filter>MIMIc\Utilities\Headers</Filter>
     </None>
   </ItemGroup>
 </Project>

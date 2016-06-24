@@ -2,11 +2,13 @@
 #ifndef ENTITIES_ENTITIESMANAGER_H
 #define ENTITIES_ENTITIESMANAGER_H
 
+// DataModel
+#include "WordDescriptor.h"
+
 // Components
 #include "TransformationComponent.h"
 
 // Messages
-#include "MessageTypes.h";
 #include "MessageListener.h"
 
 // Entities
@@ -38,8 +40,7 @@ namespace MIMIc { namespace Entities { namespace Managers {
                                            const float rotation, 
                                            const Math::Vector2D& scale,
                                            const Math::Vector2D& velocity, 
-                                           const char* const style,
-                                           const char text,
+                                           const DataModel::WordDescriptor& text,
                                            const int renderPassId);
             
         private:

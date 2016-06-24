@@ -1,4 +1,7 @@
 
+// DataModel
+#include "WordDescriptor.h"
+
 // Messages
 #include "MessageManager.h";
 #include "MessageMemoryManager.h";
@@ -28,29 +31,10 @@ void test()
 
     auto transformation = TransformationDataForMessage();
 
+    auto words = DataModel::WordDescriptor::ParseStringForWords("abcdefghijk<test>lmnopqrstuvwxyz</test>");
     transformation.m_position.X(0);
     transformation.m_position.Y(0);
-    auto message = new Messages::Types::CreateTextEntity("C:\\Users\\v-iaelle\\Documents\\GitHub\\MIMIc\\data\\dat\\default.dat", "a", transformation, renderPassId);
-    MAILMAN.PostMessage(message);
-
-    transformation.m_position.X(20);
-    transformation.m_position.Y(20);
-    message = new Messages::Types::CreateTextEntity("C:\\Users\\v-iaelle\\Documents\\GitHub\\MIMIc\\data\\dat\\default.dat", "b", transformation, renderPassId);
-    MAILMAN.PostMessage(message);
-
-    transformation.m_position.X(40);
-    transformation.m_position.Y(40);
-    message = new Messages::Types::CreateTextEntity("C:\\Users\\v-iaelle\\Documents\\GitHub\\MIMIc\\data\\dat\\default.dat", "c", transformation, renderPassId);
-    MAILMAN.PostMessage(message);
-
-    transformation.m_position.X(60);
-    transformation.m_position.Y(60);
-    message = new Messages::Types::CreateTextEntity("C:\\Users\\v-iaelle\\Documents\\GitHub\\MIMIc\\data\\dat\\default.dat", "d", transformation, renderPassId);
-    MAILMAN.PostMessage(message);
-
-    transformation.m_position.X(80);
-    transformation.m_position.Y(80);
-    message = new Messages::Types::CreateTextEntity("C:\\Users\\v-iaelle\\Documents\\GitHub\\MIMIc\\data\\dat\\default.dat", "e", transformation, renderPassId);
+    auto message = new Messages::Types::CreateTextEntity(words[0], transformation, renderPassId);
     MAILMAN.PostMessage(message);
 }
 

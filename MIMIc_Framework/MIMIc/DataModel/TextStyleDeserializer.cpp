@@ -37,12 +37,16 @@ namespace MIMIc { namespace DataModel {
 
     TextStyle TextStyleDeserializer::Deserialize(const std::string& key) const
     {
+        // TODO:
+        // Obviously
+        std::string fileName = "C:\\Users\\v-iaelle\\Documents\\GitHub\\MIMIc\\data\\dat\\" + key + ".dat";
+
         bool success = true;
         char characterWidth, characterHeight;
         TextStyle ts;
-        ts.m_style = Utilities::Path::GetFileNameWithoutExtension(key.c_str());
+        ts.m_style = Utilities::Path::GetFileNameWithoutExtension(fileName.c_str());
 
-        success = Start(key.c_str());
+        success = Start(fileName.c_str());
         success = ReadObjectStart(0, 0);
         
         success = ReadNamedBinaryValue<char>(0, 0, &characterWidth);

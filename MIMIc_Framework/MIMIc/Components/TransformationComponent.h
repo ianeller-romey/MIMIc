@@ -26,7 +26,7 @@ namespace MIMIc { namespace Components {
             void SetPosition(const float x, const float y);
             bool PositionChanged() const;
             Math::Vector2D GetPositionChange() const;
-            Math::Vector2D GetPosition() const;
+            const Math::Vector2D& GetPosition() const;
 
             void SetRotation(const float rotation);
             bool RotationChanged() const;
@@ -36,12 +36,12 @@ namespace MIMIc { namespace Components {
             void SetScale(const float x, const float y);
             bool ScaleChanged() const;
             Math::Vector2D GetScaleChange() const;
-            Math::Vector2D GetScale() const;
+            const Math::Vector2D& GetScale() const;
 
             void SetVelocity(const float x, const float y);
             bool VelocityChanged() const;
             Math::Vector2D GetVelocityChange() const;
-            Math::Vector2D GetVelocity() const;
+            const Math::Vector2D& GetVelocity() const;
 
         private:
             TransformationComponent& operator=(const TransformationComponent& rhs);

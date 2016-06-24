@@ -1,6 +1,9 @@
 
 // Components
-#include "TextCharacterGraphicsComponent.h"
+#include "TextStringGraphicsComponent.h"
+
+// Messages
+#include "MessageTypes.h";
 
 // Graphics
 #include "GraphicsManager.h"
@@ -75,19 +78,27 @@ namespace MIMIc { namespace Graphics { namespace Managers {
     }
 
 
-    Components::Component* const GraphicsManager::CreateTextCharacterGraphicsComponent(const long entityId, 
-                                                                                       Components::Component* transformationComponent, 
-                                                                                       const char* const style, 
-                                                                                       const char text, 
-                                                                                       const int renderPassId)
+    Components::Component* const GraphicsManager::CreateTextStringGraphicsComponent(const long entityId, 
+                                                                                    Components::Component* transformationComponent, 
+                                                                                    const DataModel::WordDescriptor& text, 
+                                                                                    const int renderPassId)
     {
-        auto graphicsComponent = new Components::TextCharacterGraphicsComponent(entityId, transformationComponent, style, text);
+        auto graphicsComponent = new Components::TextStringGraphicsComponent(entityId, transformationComponent, text);
 
         auto renderPass = (TextRenderPass*)GetRenderPass(renderPassId);
-        renderPass->AddTextCharacterGraphicsComponent(graphicsComponent);
+        renderPass->AddTextStringGraphicsComponent(graphicsComponent);
 
         m_graphicsComponents.push_back(graphicsComponent);
         return graphicsComponent;
+    }
+
+
+    void GraphicsManager::Process(Messages::Types::SetTextString* message)
+    {
+        auto component = GetComponentByEntityId(message->m_entityId);
+        auto textStringGraphicsComponent = dynamic_cast<Components::TextStringGraphicsComponent*>(component);
+        if(textStringGraphicsComponent)
+            textStringGraphicsComponent->SetTextString(message->m_text);
     }
 
 
@@ -106,6 +117,18 @@ namespace MIMIc { namespace Graphics { namespace Managers {
                 break;
             }
         }
+    }
+
+
+    Components::Component* GraphicsManager::GetComponentByEntityId(const long entityId) const
+    {
+        for(auto component : m_graphicsComponents)
+        {
+            if(component->GetEntityId() == entityId)
+                return component;
+        }
+
+        return 0;
     }
 
 } } }

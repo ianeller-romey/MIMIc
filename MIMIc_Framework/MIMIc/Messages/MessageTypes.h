@@ -2,12 +2,16 @@
 #ifndef MESSAGES_MESSAGETYPES_H
 #define MESSAGES_MESSAGETYPES_H
 
+// DataModel
+#include "WordDescriptor.h"
+
 // Messages
 #include "MessageTypeHelpers.h"
 #include "MessageListener.h"
 #include "MessageMemoryManager.h"
 
 // std
+#include <vector>
 #include <string>
 
 
@@ -36,27 +40,36 @@ namespace MIMIc { namespace Messages { namespace Types {
 
 
     DECLARE_MESSAGE_TYPE(CreateTextEntity)
-        const std::string m_style,
-                          m_text;
+        const DataModel::WordDescriptor m_text;
         const TransformationDataForMessage m_transformation;
         const int m_renderPassId;
 
-        CreateTextEntity(const char* const style, const char* const text, const TransformationDataForMessage transformation, const int renderPassId) :
-            m_style(style),
+        CreateTextEntity(const DataModel::WordDescriptor& text, const TransformationDataForMessage transformation, const int renderPassId) :
             m_text(text),
             m_transformation(transformation),
             m_renderPassId(renderPassId)
         {
         };
 
-        CreateTextEntity(const char* const style, const char* const text, const int renderPassId) :
-            m_style(style),
+        CreateTextEntity(const DataModel::WordDescriptor& text, const int renderPassId) :
             m_text(text),
             m_transformation(),
             m_renderPassId(renderPassId)
         {
         };
     END_MESSAGELISTENER_DISPATCH_DECLARATION(CreateTextEntity)
+
+
+    DECLARE_MESSAGE_TYPE(SetTextString)
+        const long m_entityId;
+        const DataModel::WordDescriptor m_text;
+
+        SetTextString(const long entityId, const DataModel::WordDescriptor& text) :
+            m_entityId(entityId),
+            m_text(text)
+        {
+        };
+    END_MESSAGELISTENER_DISPATCH_DECLARATION(SetTextString)
 
 } } }
 

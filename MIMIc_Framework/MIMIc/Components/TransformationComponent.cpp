@@ -86,7 +86,7 @@ namespace MIMIc { namespace Components {
     }
 
 
-    Math::Vector2D TransformationComponent::GetPosition() const
+    const Math::Vector2D& TransformationComponent::GetPosition() const
     {
         return m_position;
     }
@@ -135,7 +135,7 @@ namespace MIMIc { namespace Components {
     }
 
 
-    Math::Vector2D TransformationComponent::GetScale() const
+    const Math::Vector2D& TransformationComponent::GetScale() const
     {
         return m_scale;
     }
@@ -160,7 +160,7 @@ namespace MIMIc { namespace Components {
     }
 
 
-    Math::Vector2D TransformationComponent::GetVelocity() const
+    const Math::Vector2D& TransformationComponent::GetVelocity() const
     {
         return m_velocity;
     }

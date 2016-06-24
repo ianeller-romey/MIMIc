@@ -1,4 +1,7 @@
 
+// Messages
+#include "MessageTypes.h";
+
 // Entities
 #include "EntitiesManager.h"
 
@@ -59,8 +62,7 @@ namespace MIMIc { namespace Entities { namespace Managers {
                          message->m_transformation.m_rotation, 
                          message->m_transformation.m_scale,
                          message->m_transformation.m_velocity,
-                         message->m_style.c_str(),
-                         message->m_text[0],
+                         message->m_text,
                          message->m_renderPassId);
     }
 
@@ -69,17 +71,16 @@ namespace MIMIc { namespace Entities { namespace Managers {
                                                         const float rotation, 
                                                         const Math::Vector2D& scale,
                                                         const Math::Vector2D& velocity, 
-                                                        const char* const style,
-                                                        const char text,
+                                                        const DataModel::WordDescriptor& text,
                                                         const int renderPassId)
     {
         m_textEntities.push_back(EntityAndTransformation<Entity>());
-        auto et = m_textEntities.back();
+        auto& et = m_textEntities.back();
 
         auto entity = new (et.m_entity) Entity();
-        auto transformation = new (et.m_transformationComponent) Components::TransformationComponent(entity->GetId(), position, rotation, scale, velocity);
+        entity->m_transformationComponent = new (et.m_transformationComponent) Components::TransformationComponent(entity->GetId(), position, rotation, scale, velocity);
 
-        auto graphicsComponent = GRAPHICSMANAGERINSTANCE.CreateTextCharacterGraphicsComponent(entity->GetId(), transformation, style, text, renderPassId);
+        auto graphicsComponent = GRAPHICSMANAGERINSTANCE.CreateTextStringGraphicsComponent(entity->GetId(), entity->m_transformationComponent, text, renderPassId);
         entity->m_graphicsComponent = graphicsComponent;
 
         return (Entity*)(&et.m_entity);

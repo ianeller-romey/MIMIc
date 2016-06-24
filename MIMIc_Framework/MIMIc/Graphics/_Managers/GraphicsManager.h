@@ -2,6 +2,9 @@
 #ifndef GRAPHICS_GRAPHICSMANAGER_H
 #define GRAPHICS_GRAPHICSMANAGER_H
 
+// DataModel
+#include "WordDescriptor.h"
+
 // Components
 #include "Component.h"
 
@@ -34,11 +37,12 @@ namespace MIMIc { namespace Graphics { namespace Managers {
             RenderPass* const CreateRenderPass(Framework::Window* window);
             RenderPass* const GetRenderPass(const int renderPassId) const;
 
-            Components::Component* const CreateTextCharacterGraphicsComponent(const long entityId,
-                                                                              Components::Component* transformationComponent, 
-                                                                              const char* const style, 
-                                                                              const char text, 
-                                                                              const int renderPassId);
+            Components::Component* const CreateTextStringGraphicsComponent(const long entityId,
+                                                                           Components::Component* transformationComponent,
+                                                                           const DataModel::WordDescriptor& text, 
+                                                                           const int renderPassId);
+
+            virtual void Process(Messages::Types::SetTextString* message) override;
 
             void RemoveGraphicsComponent(Components::Component* const graphicsComponent);
             
@@ -50,6 +54,8 @@ namespace MIMIc { namespace Graphics { namespace Managers {
             static GraphicsManager* s_instance;
             std::vector<RenderPass*> m_renderPasses;
             std::list<Components::Component*> m_graphicsComponents;
+
+            Components::Component* GetComponentByEntityId(const long entityId) const;
     };
     
 } } }

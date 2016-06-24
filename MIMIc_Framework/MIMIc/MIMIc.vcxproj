@@ -93,9 +93,10 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
   <ItemGroup>
     <ClCompile Include="Behaviors\_Managers\BehaviorsManager.cpp" />
     <ClCompile Include="Components\Component.cpp" />
-    <ClCompile Include="Components\TextCharacterGraphicsComponent.cpp" />
+    <ClCompile Include="Components\TextStringGraphicsComponent.cpp" />
     <ClCompile Include="Components\TextStringOverTimeBehaviorComponent.cpp" />
     <ClCompile Include="Components\TransformationComponent.cpp" />
+    <ClCompile Include="DataModel\WordDescriptor.cpp" />
     <ClCompile Include="DataModel\CharacterXYDescriptor.cpp" />
     <ClCompile Include="DataModel\CharacterXYDictionary.cpp" />
     <ClCompile Include="DataModel\TextStyle.cpp" />
@@ -113,6 +114,7 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
     <ClCompile Include="Graphics\ShaderDeserializer.cpp" />
     <ClCompile Include="Graphics\TestRenderPass.cpp" />
     <ClCompile Include="Graphics\TextRenderPass.cpp" />
+    <ClCompile Include="Graphics\VertexArray.cpp" />
     <ClCompile Include="Graphics\VERTICES.cpp" />
     <ClCompile Include="Graphics\_Managers\GraphicsManager.cpp" />
     <ClCompile Include="Math\Trig.cpp" />
@@ -125,9 +127,10 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
   <ItemGroup>
     <ClInclude Include="Behaviors\_Managers\BehaviorsManager.h" />
     <ClInclude Include="Components\Component.h" />
-    <ClInclude Include="Components\TextCharacterGraphicsComponent.h" />
+    <ClInclude Include="Components\TextStringGraphicsComponent.h" />
     <ClInclude Include="Components\TextStringOverTimeBehaviorComponent.h" />
     <ClInclude Include="Components\TransformationComponent.h" />
+    <ClInclude Include="DataModel\WordDescriptor.h" />
     <ClInclude Include="DataModel\CharacterXYDescriptor.h" />
     <ClInclude Include="DataModel\CharacterXYDictionary.h" />
     <ClInclude Include="DataModel\TextStyle.h" />
@@ -144,6 +147,7 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
     <ClInclude Include="Graphics\ShaderDeserializer.h" />
     <ClInclude Include="Graphics\TestRenderPass.h" />
     <ClInclude Include="Graphics\TextRenderPass.h" />
+    <ClInclude Include="Graphics\VertexArray.h" />
     <ClInclude Include="Graphics\VERTICES.h" />
     <ClInclude Include="Graphics\_Managers\GraphicsManager.h" />
     <ClInclude Include="Math\Trig.h" />
@@ -157,6 +161,7 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
     <ClInclude Include="Messages\_Managers\MessageMemoryManager.h" />
     <ClInclude Include="Utilities\Deserializer.h" />
     <ClInclude Include="Utilities\HasId.h" />
+    <ClInclude Include="Utilities\HeteroPair.h" />
     <ClInclude Include="Utilities\JsonDeserializer.h" />
     <ClInclude Include="Utilities\NTuple.h" />
     <ClInclude Include="Utilities\Path.h" />
@@ -178,6 +183,10 @@ echo F|xcopy "$(SolutionDir)..\external\glew-1.13.0\bin\Release\Win32\glew32.dll
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </None>
     <None Include="Utilities\HasId.inl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </None>
+    <None Include="Utilities\HeteroPair.inl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </None>

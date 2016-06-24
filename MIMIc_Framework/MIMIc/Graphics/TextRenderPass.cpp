@@ -1,6 +1,6 @@
 
 // Components
-#include "TextCharacterGraphicsComponent.h"
+#include "TextStringGraphicsComponent.h"
 #include "TransformationComponent.h"
 
 // Graphics
@@ -136,7 +136,7 @@ namespace MIMIc { namespace Graphics {
         // u_textColor
         glUniform3f(m_glFragmentUniform_TextColor, 1.0, 1.0, 1.0);
 
-        for(auto begin = m_TextCharacterGraphicsComponents.begin(), end = m_TextCharacterGraphicsComponents.end(); begin != end; ++begin)
+        for(auto graphicsComponent : m_textStringGraphicsComponents)
         {
             float vertexData[] =
             {
@@ -150,20 +150,23 @@ namespace MIMIc { namespace Graphics {
             };
             auto v = &vertexData;
 
-            auto graphicsComponent = *begin;
-            UpdateTextCharacterGraphicsComponent(graphicsComponent);
-            GenerateTextTextureData(graphicsComponent, &m_shaderData, (float**)&v);
+            graphicsComponent->Update();
 
-            // Bind the VBO  
-            glBindBuffer(GL_ARRAY_BUFFER, m_glVBO);
-            glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_DYNAMIC_DRAW);
+            for(unsigned i = 0, j = graphicsComponent->GetStringLength(); i < j; ++i)
+            {
+                GenerateTextTextureData(graphicsComponent->GetCharacterAndVertex(i), &m_shaderData, (float**)&v);
 
-            // Bind the UBO
-            glBindBuffer(GL_UNIFORM_BUFFER, m_glFragmentUBO);
-            glBufferData(GL_UNIFORM_BUFFER, sizeof(m_shaderData), &m_shaderData, GL_DYNAMIC_DRAW);
+                // Bind the VBO  
+                glBindBuffer(GL_ARRAY_BUFFER, m_glVBO);
+                glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_DYNAMIC_DRAW);
 
-            // Set index data and render
-            glDrawArrays(GL_TRIANGLES, 0, 6);
+                // Bind the UBO
+                glBindBuffer(GL_UNIFORM_BUFFER, m_glFragmentUBO);
+                glBufferData(GL_UNIFORM_BUFFER, sizeof(m_shaderData), &m_shaderData, GL_DYNAMIC_DRAW);
+
+                // Set index data and render
+                glDrawArrays(GL_TRIANGLES, 0, 6);
+            }
         }
 
         // Unbind program
@@ -190,23 +193,23 @@ namespace MIMIc { namespace Graphics {
     }
 
 
-    void TextRenderPass::AddTextCharacterGraphicsComponent(Components::TextCharacterGraphicsComponent* const graphicsComponent)
+    void TextRenderPass::AddTextStringGraphicsComponent(Components::TextStringGraphicsComponent* const graphicsComponent)
     {
-        m_TextCharacterGraphicsComponents.push_back(graphicsComponent);
+        m_textStringGraphicsComponents.push_back(graphicsComponent);
     }
 
 
     bool TextRenderPass::RemoveGraphicsComponent(Components::Component* const graphicsComponent)
     {
-        auto TextCharacterGraphicsComponent = dynamic_cast<Components::TextCharacterGraphicsComponent*>(graphicsComponent);
-        if(TextCharacterGraphicsComponent != 0)
+        auto TextStringGraphicsComponent = dynamic_cast<Components::TextStringGraphicsComponent*>(graphicsComponent);
+        if(TextStringGraphicsComponent != 0)
         {
-            for(auto begin = m_TextCharacterGraphicsComponents.begin(), end= m_TextCharacterGraphicsComponents.end(); begin != end; ++begin)
+            for(auto begin = m_textStringGraphicsComponents.begin(), end= m_textStringGraphicsComponents.end(); begin != end; ++begin)
             {
                 auto component = *begin;
-                if(component == TextCharacterGraphicsComponent)
+                if(component == TextStringGraphicsComponent)
                 {
-                    m_TextCharacterGraphicsComponents.erase(begin);
+                    m_textStringGraphicsComponents.erase(begin);
                     return true;
                 }
             }
@@ -355,77 +358,22 @@ namespace MIMIc { namespace Graphics {
         return true;
     }
 
-    void TextRenderPass::UpdateTextCharacterGraphicsComponent(Components::TextCharacterGraphicsComponent* graphicsComponent) const
+    void TextRenderPass::GenerateTextTextureData(const Components::CharacterAndVertex& characterAndVertex, ShaderData_TextBlock* shaderData, float** vertexData) const
     {
-        Components::TransformationComponent* transformation = (Components::TransformationComponent*)(graphicsComponent->GetTransformationComponent());
-        auto textStyleTypeCharacter = graphicsComponent->GetTextStyleTypeCharacter();
-        float width = textStyleTypeCharacter->GetCharacterWidth(),
-              height = textStyleTypeCharacter->GetCharacterHeight();
-        auto vertices = graphicsComponent->GetVertices();
-        if (transformation->ScaleChanged() && !transformation->PositionChanged()) // new scale, no translation
-        { 
-            auto scale = transformation->GetScale(),
-                 position = transformation->GetPosition();
-            for(unsigned i = 0, j = NUM_VERTICES; i < j; ++i)
-            {
-                auto vert = Graphics::VERTICES[i];
-                auto scaled = Math::Vector2D(vert.X() * width * scale.X(), vert.Y() * height * scale.Y());
-                vertices[i].X(scaled.X() + position.X());
-                vertices[i].Y(scaled.Y() + position.Y());
-            }
-        } 
-        else if (!transformation->ScaleChanged() && transformation->PositionChanged()) // no scale, new translation
-        { 
-            auto translation = transformation->GetPositionChange();
-            for(unsigned i = 0, j = NUM_VERTICES; i < j; ++i)
-            {
-                auto vert = Graphics::VERTICES[i];
-                vertices[i].TranslateAndAssign(translation.X(), translation.Y());
-            }
-        }  
-        else if (transformation->ScaleChanged() && transformation->PositionChanged()) // new scale, new translation
-        { 
-            auto scale = transformation->GetScale(),
-                 position = transformation->GetPosition(),
-                 translation = transformation->GetPositionChange();
-            for(unsigned i = 0, j = NUM_VERTICES; i < j; ++i)
-            {
-                auto vert = Graphics::VERTICES[i];
-                auto scaled = Math::Vector2D(vert.X() * width * scale.X(), vert.Y() * height * scale.Y());
-                vertices[i].X(scaled.X() + position.X());
-                vertices[i].Y(scaled.Y() + position.Y());
-                vertices[i].TranslateAndAssign(translation.X(), translation.Y());
-            }
-        }
-
-        if (transformation->RotationChanged()) // rotation changed
-        {
-            auto theta = transformation->GetRotationChange();
-            auto origin = transformation->GetPosition().Translate(width / 2.0, height / 2.0);
-            
-            for(unsigned i = 0, j = NUM_VERTICES; i < j; ++i)
-            {
-                vertices[i].RotateAndAssign(origin.X(), origin.Y(), theta);
-            }
-        }
-    }
-
-    void TextRenderPass::GenerateTextTextureData(Components::TextCharacterGraphicsComponent* component, ShaderData_TextBlock* shaderData, float** vertexData) const
-    {
-        auto textCharacter = component->GetTextStyleTypeCharacter();
+        auto textCharacter = characterAndVertex.m_value1;
         // textCharacter stores this data as a char, but we want to make sure to use
         // the same data type as the shader, so that's why these variables are SHADERDATA_CHARACTERDATA
-        SHADERDATA_CHARACTERDATA characterWidth = textCharacter->GetCharacterWidth(),
-                                 characterHeight = textCharacter->GetCharacterHeight();
+        SHADERDATA_CHARACTERDATA characterWidth = textCharacter.GetCharacterWidth(),
+                                 characterHeight = textCharacter.GetCharacterHeight();
 
         // set character width and character height
         memcpy(shaderData->m_textDimensions, &characterWidth, sizeof(SHADERDATA_SIZEOF_CHARACTERDATA));
         memcpy(shaderData->m_textDimensions + sizeof(SHADERDATA_SIZEOF_CHARACTERDATA), &characterHeight, sizeof(SHADERDATA_SIZEOF_CHARACTERDATA));
 
         // set data
-        memcpy(shaderData->m_textArray, textCharacter->GetData(), sizeof(CHARACTERDATA) * textCharacter->GetDataLength());
+        memcpy(shaderData->m_textArray, textCharacter.GetData(), sizeof(CHARACTERDATA) * textCharacter.GetDataLength());
 
-        auto vertices = component->GetVertices();
+        auto vertices = characterAndVertex.m_value2;
         GLfloat tempVertices[] =
         {
             // x             // y             // u  // v

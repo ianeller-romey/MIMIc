@@ -398,6 +398,11 @@ namespace MIMIc { namespace DataModel {
         values[0] = 8; values[1] = 4;
         m_dictionary['*'] = CharacterXYDescriptor(typeText, values);
 
+        // ' ' and '\n'
+        values[0] = 9; values[1] = 4;
+        m_dictionary[' '] = CharacterXYDescriptor(typeText, values);
+        m_dictionary['\n'] = CharacterXYDescriptor(typeText, values);
+
         // '│'
         values[0] = 3; values[1] = 0;
         m_dictionary['│'] = CharacterXYDescriptor(typeLines, values);
